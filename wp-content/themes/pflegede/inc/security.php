@@ -75,13 +75,30 @@ function pflegede_restrict_rest_api( $result ) {
 add_filter( 'rest_authentication_errors', 'pflegede_restrict_rest_api' );
 
 // ─── Prevent direct access to sensitive files via .htaccess hint ──────────────
+// NOTE: Uses dual-syntax rules to work on Apache 2.2 (mod_access) AND
+// Apache 2.4 (mod_authz_core). The old `Deny from all` alone causes 500 errors
+// on Apache 2.4 setups without mod_access_compat loaded.
 function pflegede_no_index_on_uploads() {
     $upload_dir = wp_upload_dir();
-    $htaccess   = trailingslashit( $upload_dir['basedir'] ) . '.htaccess';
-    if ( ! file_exists( $htaccess ) ) {
-        $rules = "Options -Indexes\n";
-        $rules .= "<Files *.php>\nDeny from all\n</Files>\n";
-        file_put_contents( $htaccess, $rules ); // phpcs:ignore
+    if ( empty( $upload_dir['basedir'] ) ) {
+        return;
+    }
+    $htaccess = trailingslashit( $upload_dir['basedir'] ) . '.htaccess';
+    $expected = "# Pflegede — uploads protection\n"
+              . "Options -Indexes\n\n"
+              . "<FilesMatch \"\\.(php|phtml|phar|php7|phps|pl|py|jsp|asp|sh|cgi)$\">\n"
+              . "    <IfModule mod_authz_core.c>\n"
+              . "        Require all denied\n"
+              . "    </IfModule>\n"
+              . "    <IfModule !mod_authz_core.c>\n"
+              . "        Order Allow,Deny\n"
+              . "        Deny from all\n"
+              . "    </IfModule>\n"
+              . "</FilesMatch>\n";
+
+    // Only write if missing OR content doesn't match expected (upgrade old syntax)
+    if ( ! file_exists( $htaccess ) || md5_file( $htaccess ) !== md5( $expected ) ) {
+        @file_put_contents( $htaccess, $expected ); // phpcs:ignore
     }
 }
 add_action( 'init', 'pflegede_no_index_on_uploads' );

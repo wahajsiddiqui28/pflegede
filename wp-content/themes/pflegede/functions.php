@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-define( 'PFLEGEDE_VERSION', '2.10.4' );
+define( 'PFLEGEDE_VERSION', '2.10.5' );
 define( 'PFLEGEDE_DIR', get_template_directory() );
 define( 'PFLEGEDE_URI', get_template_directory_uri() );
 
