@@ -80,3 +80,69 @@ function pflegede_enqueue_assets() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'pflegede_enqueue_assets' );
+
+/**
+ * Inject custom SVG favicon (and theme color) into <head>.
+ * Only runs if WordPress site-icon is NOT set in Customizer — site-icon takes precedence.
+ */
+function pflegede_favicon_tags() {
+    if ( has_site_icon() ) {
+        return;
+    }
+    $icon = PFLEGEDE_URI . '/assets/images/favicon.svg';
+    echo '<link rel="icon" type="image/svg+xml" href="' . esc_url( $icon ) . '">' . "\n";
+    echo '<link rel="alternate icon" href="' . esc_url( $icon ) . '">' . "\n";
+    echo '<link rel="apple-touch-icon" href="' . esc_url( $icon ) . '">' . "\n";
+    echo '<meta name="theme-color" content="#0a5743">' . "\n";
+    echo '<meta name="msapplication-TileColor" content="#0a5743">' . "\n";
+}
+add_action( 'wp_head', 'pflegede_favicon_tags', 5 );
+
+/**
+ * Homepage SEO meta tags per Inhaltskonzept (Section: SEO-Checkliste).
+ * - Meta-Title: "Pflege in Deutschland — Pflegegrade, Leistungen & Ratgeber | pflegede.com"
+ * - Meta-Description: ~155 chars with CTA
+ * - Hreflang de
+ * - Open Graph + Twitter Cards
+ */
+function pflegede_homepage_meta_tags() {
+    if ( ! is_front_page() ) {
+        return;
+    }
+    $title = 'Pflege in Deutschland — Pflegegrade, Leistungen & Ratgeber | pflegede.com';
+    $desc  = 'Pflege verstehen: Pflegegrade, Pflegegeld 2025, Pflegearten und Ratgeber für Angehörige. Verlässliche Informationen — jetzt informieren.';
+    $url   = home_url( '/' );
+    $img   = PFLEGEDE_URI . '/assets/images/favicon.svg';
+
+    echo '<meta name="description" content="' . esc_attr( $desc ) . '">' . "\n";
+    echo '<link rel="canonical" href="' . esc_url( $url ) . '">' . "\n";
+    echo '<link rel="alternate" hreflang="de" href="' . esc_url( $url ) . '">' . "\n";
+    echo '<link rel="alternate" hreflang="x-default" href="' . esc_url( $url ) . '">' . "\n";
+
+    // Open Graph
+    echo '<meta property="og:type" content="website">' . "\n";
+    echo '<meta property="og:locale" content="de_DE">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr( $title ) . '">' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr( $desc ) . '">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
+    echo '<meta property="og:site_name" content="pflegede.com">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url( $img ) . '">' . "\n";
+
+    // Twitter Card
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr( $title ) . '">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr( $desc ) . '">' . "\n";
+    echo '<meta name="twitter:image" content="' . esc_url( $img ) . '">' . "\n";
+}
+add_action( 'wp_head', 'pflegede_homepage_meta_tags', 6 );
+
+/**
+ * Override <title> on the homepage per Inhaltskonzept (max 60 chars target).
+ */
+function pflegede_homepage_title( $title ) {
+    if ( is_front_page() ) {
+        return 'Pflege in Deutschland — Pflegegrade, Leistungen & Ratgeber | pflegede.com';
+    }
+    return $title;
+}
+add_filter( 'pre_get_document_title', 'pflegede_homepage_title' );

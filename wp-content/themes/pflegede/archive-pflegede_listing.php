@@ -24,58 +24,102 @@ $all_cities     = pflegede_get_all_cities();
 <main role="main">
 
     <!-- Hero -->
-    <section class="listings-page-hero">
-        <div class="container">
-            <h1 class="fw-bold mb-1"><?php esc_html_e( 'All Listings', 'pflegede' ); ?></h1>
-            <p class="text-muted mb-0"><?php esc_html_e( 'Browse care services and professionals across Germany', 'pflegede' ); ?></p>
+    <?php
+    $total_listings = wp_count_posts( 'pflegede_listing' )->publish;
+    $total_cats     = is_wp_error( $all_categories ) ? 0 : count( $all_categories );
+    $total_cities   = is_array( $all_cities ) ? count( $all_cities ) : 0;
+    ?>
+    <section class="page-hero-premium listings-page-hero">
+        <span class="page-hero-premium__blob page-hero-premium__blob--1"></span>
+        <span class="page-hero-premium__blob page-hero-premium__blob--2"></span>
+        <div class="container position-relative">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="page-hero-premium__eyebrow">
+                        <i class="bi bi-list-ul"></i> <?php esc_html_e( 'Directory', 'pflegede' ); ?>
+                    </span>
+                    <h1 class="page-hero-premium__title"><?php esc_html_e( 'Browse All', 'pflegede' ); ?> <span class="page-hero-premium__highlight"><?php esc_html_e( 'Listings', 'pflegede' ); ?></span></h1>
+                    <p class="page-hero-premium__subtitle"><?php esc_html_e( 'Discover trusted care services and professionals across Germany. Filter by category or city.', 'pflegede' ); ?></p>
+                </div>
+                <div class="col-lg-4 d-none d-lg-block">
+                    <div class="page-hero-premium__mini-stats">
+                        <div class="mini-stat">
+                            <div class="mini-stat__value"><?php echo esc_html( $total_listings ); ?>+</div>
+                            <div class="mini-stat__label"><?php esc_html_e( 'Listings', 'pflegede' ); ?></div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-stat__value"><?php echo esc_html( $total_cats ); ?></div>
+                            <div class="mini-stat__label"><?php esc_html_e( 'Categories', 'pflegede' ); ?></div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-stat__value"><?php echo esc_html( $total_cities ); ?>+</div>
+                            <div class="mini-stat__label"><?php esc_html_e( 'Cities', 'pflegede' ); ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <div class="container py-5">
 
         <!-- Filter Bar -->
-        <div class="filter-bar mb-4">
-            <form class="row g-2 align-items-center" method="get" action="<?php echo esc_url( home_url( '/listings/' ) ); ?>" role="search">
+        <div class="filter-bar-premium mb-4">
+            <div class="filter-bar-premium__head">
+                <span class="filter-bar-premium__eyebrow"><i class="bi bi-funnel-fill"></i> <?php esc_html_e( 'Filter Listings', 'pflegede' ); ?></span>
+            </div>
+            <form class="filter-bar-premium__grid" method="get" action="<?php echo esc_url( home_url( '/listings/' ) ); ?>" role="search">
 
-                <div class="col-12 col-md">
-                    <div class="hero-search-input-wrap">
-                        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <div class="filter-field filter-field--search">
+                    <label class="filter-field__label"><?php esc_html_e( 'Search', 'pflegede' ); ?></label>
+                    <div class="filter-field__control">
+                        <i class="bi bi-search filter-field__icon"></i>
                         <input type="text" name="s" value="<?php echo esc_attr( $search_term ); ?>"
-                               class="form-control hero-search-input filter-select"
-                               placeholder="<?php esc_attr_e( 'Search listings...', 'pflegede' ); ?>"
+                               class="filter-field__input"
+                               placeholder="<?php esc_attr_e( 'Search by name or keyword...', 'pflegede' ); ?>"
                                autocomplete="off" />
                     </div>
                 </div>
 
-                <div class="col-12 col-sm-6 col-md-auto">
-                    <select name="cat" class="form-select filter-select" aria-label="<?php esc_attr_e( 'Filter by category', 'pflegede' ); ?>">
-                        <option value=""><?php esc_html_e( 'All Categories', 'pflegede' ); ?></option>
-                        <?php foreach ( $all_categories as $cat ) : ?>
-                            <option value="<?php echo esc_attr( $cat->slug ); ?>" <?php selected( $filter_cat, $cat->slug ); ?>>
-                                <?php echo esc_html( $cat->name ); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
+                <div class="filter-field">
+                    <label class="filter-field__label"><?php esc_html_e( 'Category', 'pflegede' ); ?></label>
+                    <div class="filter-field__control">
+                        <i class="bi bi-grid-fill filter-field__icon"></i>
+                        <select name="cat" class="filter-field__input filter-field__select" aria-label="<?php esc_attr_e( 'Filter by category', 'pflegede' ); ?>">
+                            <option value=""><?php esc_html_e( 'All Categories', 'pflegede' ); ?></option>
+                            <?php foreach ( $all_categories as $cat ) : ?>
+                                <option value="<?php echo esc_attr( $cat->slug ); ?>" <?php selected( $filter_cat, $cat->slug ); ?>>
+                                    <?php echo esc_html( $cat->name ); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                 </div>
 
                 <?php if ( ! empty( $all_cities ) ) : ?>
-                <div class="col-12 col-sm-6 col-md-auto">
-                    <select name="city" class="form-select filter-select" aria-label="<?php esc_attr_e( 'Filter by city', 'pflegede' ); ?>">
-                        <option value=""><?php esc_html_e( 'All Cities', 'pflegede' ); ?></option>
-                        <?php foreach ( $all_cities as $city ) : ?>
-                            <option value="<?php echo esc_attr( $city ); ?>" <?php selected( $filter_city, $city ); ?>>
-                                <?php echo esc_html( $city ); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
+                <div class="filter-field">
+                    <label class="filter-field__label"><?php esc_html_e( 'City', 'pflegede' ); ?></label>
+                    <div class="filter-field__control">
+                        <i class="bi bi-geo-alt-fill filter-field__icon"></i>
+                        <select name="city" class="filter-field__input filter-field__select" aria-label="<?php esc_attr_e( 'Filter by city', 'pflegede' ); ?>">
+                            <option value=""><?php esc_html_e( 'All Cities', 'pflegede' ); ?></option>
+                            <?php foreach ( $all_cities as $city ) : ?>
+                                <option value="<?php echo esc_attr( $city ); ?>" <?php selected( $filter_city, $city ); ?>>
+                                    <?php echo esc_html( $city ); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                 </div>
                 <?php endif; ?>
 
-                <div class="col-12 col-md-auto d-flex gap-2">
-                    <button type="submit" class="btn btn-primary"><?php esc_html_e( 'Search', 'pflegede' ); ?></button>
+                <div class="filter-field filter-field--actions">
+                    <button type="submit" class="filter-btn-primary">
+                        <i class="bi bi-search"></i> <?php esc_html_e( 'Search', 'pflegede' ); ?>
+                    </button>
                     <?php if ( $search_term || $filter_cat || $filter_city ) : ?>
-                        <a href="<?php echo esc_url( home_url( '/listings/' ) ); ?>" class="btn btn-outline-secondary">
-                            <?php esc_html_e( 'Clear', 'pflegede' ); ?>
+                        <a href="<?php echo esc_url( home_url( '/listings/' ) ); ?>" class="filter-btn-clear">
+                            <i class="bi bi-x-lg"></i> <?php esc_html_e( 'Clear', 'pflegede' ); ?>
                         </a>
                     <?php endif; ?>
                 </div>
@@ -108,12 +152,14 @@ $all_cities     = pflegede_get_all_cities();
             <?php pflegede_pagination( $listings_query ); ?>
 
         <?php else : ?>
-            <div class="text-center py-5">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" stroke-width="1.5" class="mb-3"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <h4 class="fw-bold"><?php esc_html_e( 'No listings found', 'pflegede' ); ?></h4>
-                <p class="text-muted"><?php esc_html_e( 'Try adjusting your search or browse all categories.', 'pflegede' ); ?></p>
-                <a href="<?php echo esc_url( home_url( '/listings/' ) ); ?>" class="btn btn-outline-primary">
-                    <?php esc_html_e( 'View All Listings', 'pflegede' ); ?>
+            <div class="listings-empty">
+                <div class="listings-empty__icon">
+                    <i class="bi bi-search"></i>
+                </div>
+                <h4 class="listings-empty__title"><?php esc_html_e( 'No listings found', 'pflegede' ); ?></h4>
+                <p class="listings-empty__text"><?php esc_html_e( 'Try adjusting your search or browse all categories.', 'pflegede' ); ?></p>
+                <a href="<?php echo esc_url( home_url( '/listings/' ) ); ?>" class="listings-empty__btn">
+                    <i class="bi bi-arrow-left-circle"></i> <?php esc_html_e( 'View All Listings', 'pflegede' ); ?>
                 </a>
             </div>
         <?php endif; ?>

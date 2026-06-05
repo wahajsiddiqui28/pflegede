@@ -8,10 +8,26 @@ get_header();
 
 <main role="main">
 
-    <section class="about-hero">
-        <div class="container">
-            <h1 class="fw-bold mb-2"><?php esc_html_e( 'About Pflegede', 'pflegede' ); ?></h1>
-            <p class="text-muted mb-0"><?php esc_html_e( 'Your trusted directory for care services across Germany', 'pflegede' ); ?></p>
+    <section class="page-hero-premium about-hero">
+        <span class="page-hero-premium__blob page-hero-premium__blob--1"></span>
+        <span class="page-hero-premium__blob page-hero-premium__blob--2"></span>
+        <div class="container position-relative">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="page-hero-premium__eyebrow">
+                        <i class="bi bi-info-circle"></i> <?php esc_html_e( 'About Us', 'pflegede' ); ?>
+                    </span>
+                    <h1 class="page-hero-premium__title"><?php esc_html_e( 'About', 'pflegede' ); ?> <span class="page-hero-premium__highlight">Pflegede</span></h1>
+                    <p class="page-hero-premium__subtitle"><?php esc_html_e( 'Your trusted directory for verified care professionals and services across Germany.', 'pflegede' ); ?></p>
+                </div>
+                <div class="col-lg-4 d-none d-lg-flex justify-content-end">
+                    <div class="page-hero-premium__icon-stack">
+                        <span class="page-hero-premium__icon-stack-item"><i class="bi bi-hospital"></i></span>
+                        <span class="page-hero-premium__icon-stack-item"><i class="bi bi-person-heart"></i></span>
+                        <span class="page-hero-premium__icon-stack-item"><i class="bi bi-shield-check"></i></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -34,24 +50,56 @@ get_header();
 
                     <div class="row g-4 mb-5">
                         <div class="col-md-4">
-                            <div class="card about-feature-card h-100 border p-4 text-center">
-                                <div class="about-feature-icon mb-3"><i class="bi bi-hospital"></i></div>
-                                <h5 class="fw-bold"><?php esc_html_e( 'Comprehensive Directory', 'pflegede' ); ?></h5>
-                                <p class="text-muted small mb-0"><?php esc_html_e( 'Find healthcare providers, nursing services, caregivers, and medical professionals all in one place.', 'pflegede' ); ?></p>
+                            <div class="about-feature-card about-feature-card--navy h-100">
+                                <div class="about-feature-icon"><i class="bi bi-hospital"></i></div>
+                                <h5 class="about-feature-title"><?php esc_html_e( 'Comprehensive Directory', 'pflegede' ); ?></h5>
+                                <p class="about-feature-text"><?php esc_html_e( 'Find healthcare providers, nursing services, caregivers, and medical professionals all in one place.', 'pflegede' ); ?></p>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card about-feature-card h-100 border p-4 text-center">
-                                <div class="about-feature-icon mb-3"><i class="bi bi-patch-check"></i></div>
-                                <h5 class="fw-bold"><?php esc_html_e( 'Verified Listings', 'pflegede' ); ?></h5>
-                                <p class="text-muted small mb-0"><?php esc_html_e( 'Every listing is manually reviewed and added by our team to ensure quality and accuracy.', 'pflegede' ); ?></p>
+                            <div class="about-feature-card about-feature-card--red h-100">
+                                <div class="about-feature-icon"><i class="bi bi-patch-check"></i></div>
+                                <h5 class="about-feature-title"><?php esc_html_e( 'Verified Listings', 'pflegede' ); ?></h5>
+                                <p class="about-feature-text"><?php esc_html_e( 'Every listing is manually reviewed and added by our team to ensure quality and accuracy.', 'pflegede' ); ?></p>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card about-feature-card h-100 border p-4 text-center">
-                                <div class="about-feature-icon mb-3"><i class="bi bi-geo-alt"></i></div>
-                                <h5 class="fw-bold"><?php esc_html_e( 'Germany Wide', 'pflegede' ); ?></h5>
-                                <p class="text-muted small mb-0"><?php esc_html_e( 'Covering all major cities and regions across Germany to help you find local care services.', 'pflegede' ); ?></p>
+                            <div class="about-feature-card about-feature-card--green h-100">
+                                <div class="about-feature-icon"><i class="bi bi-geo-alt"></i></div>
+                                <h5 class="about-feature-title"><?php esc_html_e( 'Germany Wide', 'pflegede' ); ?></h5>
+                                <p class="about-feature-text"><?php esc_html_e( 'Covering all major cities and regions across Germany to help you find local care services.', 'pflegede' ); ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Row -->
+                    <div class="about-stats row g-3 mb-5">
+                        <div class="col-6 col-md-3">
+                            <div class="about-stat-box">
+                                <div class="about-stat-icon"><i class="bi bi-people-fill"></i></div>
+                                <div class="about-stat-value">100+</div>
+                                <div class="about-stat-label"><?php esc_html_e( 'Care Providers', 'pflegede' ); ?></div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="about-stat-box">
+                                <div class="about-stat-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                                <div class="about-stat-value">50+</div>
+                                <div class="about-stat-label"><?php esc_html_e( 'Cities Covered', 'pflegede' ); ?></div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="about-stat-box">
+                                <div class="about-stat-icon"><i class="bi bi-grid-fill"></i></div>
+                                <div class="about-stat-value">6</div>
+                                <div class="about-stat-label"><?php esc_html_e( 'Categories', 'pflegede' ); ?></div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="about-stat-box">
+                                <div class="about-stat-icon"><i class="bi bi-shield-check"></i></div>
+                                <div class="about-stat-value">100%</div>
+                                <div class="about-stat-label"><?php esc_html_e( 'Verified', 'pflegede' ); ?></div>
                             </div>
                         </div>
                     </div>

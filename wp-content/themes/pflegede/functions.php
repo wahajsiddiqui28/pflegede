@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-define( 'PFLEGEDE_VERSION', '1.3.0' );
+define( 'PFLEGEDE_VERSION', '2.10.4' );
 define( 'PFLEGEDE_DIR', get_template_directory() );
 define( 'PFLEGEDE_URI', get_template_directory_uri() );
 
@@ -12,6 +12,12 @@ require_once PFLEGEDE_DIR . '/inc/cpt-listings.php';
 require_once PFLEGEDE_DIR . '/inc/meta-boxes.php';
 require_once PFLEGEDE_DIR . '/inc/helpers.php';
 require_once PFLEGEDE_DIR . '/inc/contact-form.php';
+
+// ── DEV/PRE-LAUNCH ONLY: Dummy data generator ───────────────
+// Remove this file + line before final production launch.
+if ( is_admin() ) {
+    require_once PFLEGEDE_DIR . '/inc/dummy-generator.php';
+}
 
 function pflegede_setup() {
     add_theme_support( 'title-tag' );

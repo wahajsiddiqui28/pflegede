@@ -13,20 +13,30 @@ $all_cats = get_terms( array( 'taxonomy' => 'pflegede_category', 'hide_empty' =>
 <main role="main">
 
     <!-- Hero -->
-    <section class="contact-hero">
-        <div class="container">
-            <div class="d-flex flex-wrap gap-2 mb-3">
-                <span class="badge rounded-pill border border-primary text-primary bg-white px-3 py-2">
-                    <?php esc_html_e( 'Open for Publications', 'pflegede' ); ?>
-                </span>
-                <span class="badge rounded-pill border border-primary text-primary bg-white px-3 py-2">
-                    <?php esc_html_e( 'Open for Company Listings', 'pflegede' ); ?>
-                </span>
+    <section class="page-hero-premium contact-hero">
+        <span class="page-hero-premium__blob page-hero-premium__blob--1"></span>
+        <span class="page-hero-premium__blob page-hero-premium__blob--2"></span>
+        <div class="container position-relative">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="page-hero-premium__eyebrow">
+                        <i class="bi bi-megaphone"></i> <?php esc_html_e( 'Grow Your Reach', 'pflegede' ); ?>
+                    </span>
+                    <h1 class="page-hero-premium__title"><?php esc_html_e( 'Get Your Business', 'pflegede' ); ?> <span class="page-hero-premium__highlight"><?php esc_html_e( 'Listed', 'pflegede' ); ?></span></h1>
+                    <p class="page-hero-premium__subtitle"><?php esc_html_e( 'Fill out the form and we will add your listing to our directory. Simple, fast, and free.', 'pflegede' ); ?></p>
+                    <div class="page-hero-premium__pills">
+                        <span class="hero-pill"><span class="hero-pill__dot"></span> <?php esc_html_e( 'Open for Publications', 'pflegede' ); ?></span>
+                        <span class="hero-pill"><span class="hero-pill__dot"></span> <?php esc_html_e( 'Open for Company Listings', 'pflegede' ); ?></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-none d-lg-flex justify-content-end">
+                    <div class="page-hero-premium__icon-stack">
+                        <span class="page-hero-premium__icon-stack-item"><i class="bi bi-envelope-paper"></i></span>
+                        <span class="page-hero-premium__icon-stack-item"><i class="bi bi-chat-dots"></i></span>
+                        <span class="page-hero-premium__icon-stack-item"><i class="bi bi-send"></i></span>
+                    </div>
+                </div>
             </div>
-            <h1 class="fw-bold mb-2"><?php esc_html_e( 'Get Your Business Listed', 'pflegede' ); ?></h1>
-            <p class="text-muted mb-0" style="max-width:520px;">
-                <?php esc_html_e( 'Fill out the form and we will add your listing to our directory. Simple and fast.', 'pflegede' ); ?>
-            </p>
         </div>
     </section>
 
@@ -112,13 +122,16 @@ $all_cats = get_terms( array( 'taxonomy' => 'pflegede_category', 'hide_empty' =>
 
             <!-- ── Right: Form ── -->
             <div class="col-lg-8">
-                <div class="card border">
-                    <div class="card-header">
-                        <h2 class="h5 fw-bold mb-0"><?php esc_html_e( 'Listing Request Form', 'pflegede' ); ?></h2>
+                <div class="contact-form-premium">
+                    <div class="contact-form-premium__head">
+                        <div class="contact-form-premium__head-icon"><i class="bi bi-pencil-square"></i></div>
+                        <div>
+                            <h2 class="contact-form-premium__title"><?php esc_html_e( 'Listing Request Form', 'pflegede' ); ?></h2>
+                            <p class="contact-form-premium__subtitle"><?php esc_html_e( 'Fields marked with * are required.', 'pflegede' ); ?></p>
+                        </div>
                     </div>
-                    <div class="card-body p-4">
 
-                        <p class="text-muted small mb-4"><?php esc_html_e( 'Fields marked with * are required.', 'pflegede' ); ?></p>
+                    <div class="contact-form-premium__body">
 
                         <!-- Alert messages -->
                         <div id="contactFormMessage" role="alert" aria-live="polite" style="display:none;"></div>
@@ -130,75 +143,118 @@ $all_cats = get_terms( array( 'taxonomy' => 'pflegede_category', 'hide_empty' =>
                             </div>
                             <input type="hidden" name="action" value="pflegede_contact" />
 
-                            <div class="row g-3">
-
-                                <div class="col-md-6">
-                                    <label for="your_name" class="form-label fw-semibold"><?php esc_html_e( 'Your Name', 'pflegede' ); ?> <span class="text-danger">*</span></label>
-                                    <input type="text" id="your_name" name="your_name" class="form-control" required autocomplete="name" placeholder="<?php esc_attr_e( 'John Doe', 'pflegede' ); ?>" />
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="listing_name" class="form-label fw-semibold"><?php esc_html_e( 'Company / Individual Name', 'pflegede' ); ?> <span class="text-danger">*</span></label>
-                                    <input type="text" id="listing_name" name="listing_name" class="form-control" required placeholder="<?php esc_attr_e( 'Your Business Name', 'pflegede' ); ?>" />
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="email" class="form-label fw-semibold"><?php esc_html_e( 'Email Address', 'pflegede' ); ?> <span class="text-danger">*</span></label>
-                                    <input type="email" id="email" name="email" class="form-control" required autocomplete="email" placeholder="you@example.com" />
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="phone" class="form-label fw-semibold"><?php esc_html_e( 'Phone Number', 'pflegede' ); ?> <span class="text-danger">*</span></label>
-                                    <input type="tel" id="phone" name="phone" class="form-control" required autocomplete="tel" placeholder="+49 xxx xxx xxxx" />
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="category" class="form-label fw-semibold"><?php esc_html_e( 'Category', 'pflegede' ); ?> <span class="text-danger">*</span></label>
-                                    <select id="category" name="category" class="form-select" required>
-                                        <option value=""><?php esc_html_e( 'Select a category', 'pflegede' ); ?></option>
-                                        <?php if ( ! empty( $all_cats ) && ! is_wp_error( $all_cats ) ) : ?>
-                                            <?php foreach ( $all_cats as $cat ) : ?>
-                                                <option value="<?php echo esc_attr( $cat->name ); ?>"><?php echo esc_html( $cat->name ); ?></option>
-                                            <?php endforeach; ?>
-                                        <?php endif; ?>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="city" class="form-label fw-semibold"><?php esc_html_e( 'City / Location', 'pflegede' ); ?> <span class="text-danger">*</span></label>
-                                    <input type="text" id="city" name="city" class="form-control" required placeholder="<?php esc_attr_e( 'e.g. Berlin', 'pflegede' ); ?>" />
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="website" class="form-label fw-semibold"><?php esc_html_e( 'Website URL', 'pflegede' ); ?></label>
-                                    <input type="url" id="website" name="website" class="form-control" autocomplete="url" placeholder="https://yourwebsite.com" />
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="description" class="form-label fw-semibold"><?php esc_html_e( 'Description / About', 'pflegede' ); ?> <span class="text-danger">*</span></label>
-                                    <textarea id="description" name="description" class="form-control" rows="4" required placeholder="<?php esc_attr_e( 'Tell us about your services, experience, and what makes you unique...', 'pflegede' ); ?>"></textarea>
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="extra_message" class="form-label fw-semibold"><?php esc_html_e( 'Additional Information', 'pflegede' ); ?></label>
-                                    <textarea id="extra_message" name="extra_message" class="form-control" rows="3" placeholder="<?php esc_attr_e( 'Working hours, languages spoken, services, or any other details...', 'pflegede' ); ?>"></textarea>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-note">
-                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                                        <?php esc_html_e( 'After submitting, please also send your company logo and images to our email or WhatsApp. Our team will review and add your listing manually.', 'pflegede' ); ?>
+                            <!-- Section: Personal Info -->
+                            <div class="form-section">
+                                <div class="form-section__head">
+                                    <span class="form-section__num">1</span>
+                                    <div>
+                                        <div class="form-section__title"><?php esc_html_e( 'Personal Information', 'pflegede' ); ?></div>
+                                        <div class="form-section__hint"><?php esc_html_e( 'Tell us who you are', 'pflegede' ); ?></div>
                                     </div>
                                 </div>
-
-                                <div class="col-12">
-                                    <button type="submit" class="contact-submit-btn w-100" id="contactSubmitBtn">
-                                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                                        <?php esc_html_e( 'Send Listing Request', 'pflegede' ); ?>
-                                    </button>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="your_name" class="form-label-premium"><?php esc_html_e( 'Your Name', 'pflegede' ); ?> <span class="req">*</span></label>
+                                        <div class="input-with-icon">
+                                            <i class="bi bi-person"></i>
+                                            <input type="text" id="your_name" name="your_name" class="form-control" required autocomplete="name" placeholder="<?php esc_attr_e( 'John Doe', 'pflegede' ); ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label-premium"><?php esc_html_e( 'Email Address', 'pflegede' ); ?> <span class="req">*</span></label>
+                                        <div class="input-with-icon">
+                                            <i class="bi bi-envelope"></i>
+                                            <input type="email" id="email" name="email" class="form-control" required autocomplete="email" placeholder="you@example.com" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label-premium"><?php esc_html_e( 'Phone Number', 'pflegede' ); ?> <span class="req">*</span></label>
+                                        <div class="input-with-icon">
+                                            <i class="bi bi-telephone"></i>
+                                            <input type="tel" id="phone" name="phone" class="form-control" required autocomplete="tel" placeholder="+49 xxx xxx xxxx" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="city" class="form-label-premium"><?php esc_html_e( 'City / Location', 'pflegede' ); ?> <span class="req">*</span></label>
+                                        <div class="input-with-icon">
+                                            <i class="bi bi-geo-alt"></i>
+                                            <input type="text" id="city" name="city" class="form-control" required placeholder="<?php esc_attr_e( 'e.g. Berlin', 'pflegede' ); ?>" />
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
+
+                            <!-- Section: Business Info -->
+                            <div class="form-section">
+                                <div class="form-section__head">
+                                    <span class="form-section__num">2</span>
+                                    <div>
+                                        <div class="form-section__title"><?php esc_html_e( 'Business Details', 'pflegede' ); ?></div>
+                                        <div class="form-section__hint"><?php esc_html_e( 'About your service or company', 'pflegede' ); ?></div>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="listing_name" class="form-label-premium"><?php esc_html_e( 'Company / Individual Name', 'pflegede' ); ?> <span class="req">*</span></label>
+                                        <div class="input-with-icon">
+                                            <i class="bi bi-building"></i>
+                                            <input type="text" id="listing_name" name="listing_name" class="form-control" required placeholder="<?php esc_attr_e( 'Your Business Name', 'pflegede' ); ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="category" class="form-label-premium"><?php esc_html_e( 'Category', 'pflegede' ); ?> <span class="req">*</span></label>
+                                        <div class="input-with-icon">
+                                            <i class="bi bi-grid"></i>
+                                            <select id="category" name="category" class="form-select" required>
+                                                <option value=""><?php esc_html_e( 'Select a category', 'pflegede' ); ?></option>
+                                                <?php if ( ! empty( $all_cats ) && ! is_wp_error( $all_cats ) ) : ?>
+                                                    <?php foreach ( $all_cats as $cat ) : ?>
+                                                        <option value="<?php echo esc_attr( $cat->name ); ?>"><?php echo esc_html( $cat->name ); ?></option>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="website" class="form-label-premium"><?php esc_html_e( 'Website URL', 'pflegede' ); ?></label>
+                                        <div class="input-with-icon">
+                                            <i class="bi bi-globe"></i>
+                                            <input type="url" id="website" name="website" class="form-control" autocomplete="url" placeholder="https://yourwebsite.com" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section: Additional -->
+                            <div class="form-section">
+                                <div class="form-section__head">
+                                    <span class="form-section__num">3</span>
+                                    <div>
+                                        <div class="form-section__title"><?php esc_html_e( 'Description & Notes', 'pflegede' ); ?></div>
+                                        <div class="form-section__hint"><?php esc_html_e( 'Help us understand your service', 'pflegede' ); ?></div>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="description" class="form-label-premium"><?php esc_html_e( 'Description / About', 'pflegede' ); ?> <span class="req">*</span></label>
+                                        <textarea id="description" name="description" class="form-control form-textarea-premium" rows="4" required placeholder="<?php esc_attr_e( 'Tell us about your services, experience, and what makes you unique...', 'pflegede' ); ?>"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="extra_message" class="form-label-premium"><?php esc_html_e( 'Additional Information', 'pflegede' ); ?></label>
+                                        <textarea id="extra_message" name="extra_message" class="form-control form-textarea-premium" rows="3" placeholder="<?php esc_attr_e( 'Working hours, languages spoken, services, or any other details...', 'pflegede' ); ?>"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-note">
+                                <i class="bi bi-info-circle-fill"></i>
+                                <span><?php esc_html_e( 'After submitting, please also send your company logo and images to our email or WhatsApp. Our team will review and add your listing manually.', 'pflegede' ); ?></span>
+                            </div>
+
+                            <button type="submit" class="contact-submit-btn w-100" id="contactSubmitBtn">
+                                <i class="bi bi-send-fill"></i>
+                                <span><?php esc_html_e( 'Send Listing Request', 'pflegede' ); ?></span>
+                            </button>
                         </form>
 
                     </div>
