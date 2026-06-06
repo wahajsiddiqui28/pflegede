@@ -26,7 +26,7 @@ define( 'DB_NAME', 'pflegede' );
 define( 'DB_USER', 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'frdp123' );
+define( 'DB_PASSWORD', 'Root@123' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );

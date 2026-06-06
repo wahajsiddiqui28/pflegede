@@ -36,6 +36,16 @@ function pflegede_enqueue_assets() {
         PFLEGEDE_VERSION
     );
 
+    // Blog styles — only on blog-related pages
+    if ( is_home() || is_single() || is_archive() || is_category() || is_tag() ) {
+        wp_enqueue_style(
+            'pflegede-blog',
+            PFLEGEDE_URI . '/assets/css/blog.css',
+            array( 'pflegede-main' ),
+            PFLEGEDE_VERSION
+        );
+    }
+
     // Bootstrap Bundle JS — local file (includes Popper)
     wp_enqueue_script(
         'bootstrap',

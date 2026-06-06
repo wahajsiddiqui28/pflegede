@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-define( 'PFLEGEDE_VERSION', '2.10.5' );
+define( 'PFLEGEDE_VERSION', '2.11.0' );
 define( 'PFLEGEDE_DIR', get_template_directory() );
 define( 'PFLEGEDE_URI', get_template_directory_uri() );
 
@@ -43,3 +43,10 @@ function pflegede_content_width() {
     $GLOBALS['content_width'] = 1200;
 }
 add_action( 'after_setup_theme', 'pflegede_content_width', 0 );
+
+function pflegede_show_all_blog_posts( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && $query->is_home() ) {
+        $query->set( 'posts_per_page', -1 );
+    }
+}
+add_action( 'pre_get_posts', 'pflegede_show_all_blog_posts' );
