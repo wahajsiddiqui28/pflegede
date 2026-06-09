@@ -311,28 +311,28 @@ get_header();
                         <span class="pf-pg-chip pf-pg-chip--2">PG 2</span>
                         <div>
                             <span class="pf-spotlight__label">Pflegegeld</span>
-                            <span class="pf-spotlight__val">332 €</span>
+                            <span class="pf-spotlight__val">347 €</span>
                         </div>
                     </div>
                     <div class="pf-spotlight__item">
                         <span class="pf-pg-chip pf-pg-chip--3">PG 3</span>
                         <div>
                             <span class="pf-spotlight__label">Pflegegeld</span>
-                            <span class="pf-spotlight__val">573 €</span>
+                            <span class="pf-spotlight__val">599 €</span>
                         </div>
                     </div>
                     <div class="pf-spotlight__item">
                         <span class="pf-pg-chip pf-pg-chip--4">PG 4</span>
                         <div>
                             <span class="pf-spotlight__label">Pflegegeld</span>
-                            <span class="pf-spotlight__val">765 €</span>
+                            <span class="pf-spotlight__val">800 €</span>
                         </div>
                     </div>
                     <div class="pf-spotlight__item">
                         <span class="pf-pg-chip pf-pg-chip--5">PG 5</span>
                         <div>
                             <span class="pf-spotlight__label">Pflegegeld</span>
-                            <span class="pf-spotlight__val">947 €</span>
+                            <span class="pf-spotlight__val">990 €</span>
                         </div>
                     </div>
                 </div>
@@ -358,8 +358,8 @@ get_header();
                         <div class="pf-grade-card__num">2</div>
                         <div class="pf-grade-card__name">Erhebliche Beeinträchtigung</div>
                         <div class="pf-grade-card__rows">
-                            <div class="pf-grade-card__row"><span>Pflegegeld</span><strong>332 €</strong></div>
-                            <div class="pf-grade-card__row"><span>Sachleistung</span><strong>761 €</strong></div>
+                            <div class="pf-grade-card__row"><span>Pflegegeld</span><strong>347 €</strong></div>
+                            <div class="pf-grade-card__row"><span>Sachleistung</span><strong>796 €</strong></div>
                         </div>
                     </a>
                 </div>
@@ -368,8 +368,8 @@ get_header();
                         <div class="pf-grade-card__num">3</div>
                         <div class="pf-grade-card__name">Schwere Beeinträchtigung</div>
                         <div class="pf-grade-card__rows">
-                            <div class="pf-grade-card__row"><span>Pflegegeld</span><strong>573 €</strong></div>
-                            <div class="pf-grade-card__row"><span>Sachleistung</span><strong>1.432 €</strong></div>
+                            <div class="pf-grade-card__row"><span>Pflegegeld</span><strong>599 €</strong></div>
+                            <div class="pf-grade-card__row"><span>Sachleistung</span><strong>1.497 €</strong></div>
                         </div>
                     </a>
                 </div>
@@ -378,8 +378,8 @@ get_header();
                         <div class="pf-grade-card__num">4</div>
                         <div class="pf-grade-card__name">Schwerste Beeinträchtigung</div>
                         <div class="pf-grade-card__rows">
-                            <div class="pf-grade-card__row"><span>Pflegegeld</span><strong>765 €</strong></div>
-                            <div class="pf-grade-card__row"><span>Sachleistung</span><strong>1.778 €</strong></div>
+                            <div class="pf-grade-card__row"><span>Pflegegeld</span><strong>800 €</strong></div>
+                            <div class="pf-grade-card__row"><span>Sachleistung</span><strong>1.859 €</strong></div>
                         </div>
                     </a>
                 </div>
@@ -388,8 +388,8 @@ get_header();
                         <div class="pf-grade-card__num">5</div>
                         <div class="pf-grade-card__name">Schwerste Beeintr. + besondere Anforderungen</div>
                         <div class="pf-grade-card__rows">
-                            <div class="pf-grade-card__row"><span>Pflegegeld</span><strong>947 €</strong></div>
-                            <div class="pf-grade-card__row"><span>Sachleistung</span><strong>2.200 €</strong></div>
+                            <div class="pf-grade-card__row"><span>Pflegegeld</span><strong>990 €</strong></div>
+                            <div class="pf-grade-card__row"><span>Sachleistung</span><strong>2.299 €</strong></div>
                         </div>
                     </a>
                 </div>
@@ -421,26 +421,26 @@ get_header();
                             <tr>
                                 <td><span class="pf-pg-chip pf-pg-chip--2">PG 2</span></td>
                                 <td>Erhebliche Beeinträchtigung</td>
-                                <td class="text-end pf-table-val">332 €</td>
-                                <td class="text-end pf-table-val">761 €</td>
+                                <td class="text-end pf-table-val">347 €</td>
+                                <td class="text-end pf-table-val">796 €</td>
                             </tr>
                             <tr>
                                 <td><span class="pf-pg-chip pf-pg-chip--3">PG 3</span></td>
                                 <td>Schwere Beeinträchtigung</td>
-                                <td class="text-end pf-table-val">573 €</td>
-                                <td class="text-end pf-table-val">1.432 €</td>
+                                <td class="text-end pf-table-val">599 €</td>
+                                <td class="text-end pf-table-val">1.497 €</td>
                             </tr>
                             <tr>
                                 <td><span class="pf-pg-chip pf-pg-chip--4">PG 4</span></td>
                                 <td>Schwerste Beeinträchtigung</td>
-                                <td class="text-end pf-table-val">765 €</td>
-                                <td class="text-end pf-table-val">1.778 €</td>
+                                <td class="text-end pf-table-val">800 €</td>
+                                <td class="text-end pf-table-val">1.859 €</td>
                             </tr>
                             <tr>
                                 <td><span class="pf-pg-chip pf-pg-chip--5">PG 5</span></td>
                                 <td>Schwerste Beeintr. + besondere Anforderungen</td>
-                                <td class="text-end pf-table-val">947 €</td>
-                                <td class="text-end pf-table-val">2.200 €</td>
+                                <td class="text-end pf-table-val">990 €</td>
+                                <td class="text-end pf-table-val">2.299 €</td>
                             </tr>
                         </tbody>
                     </table>
