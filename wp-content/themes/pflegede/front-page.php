@@ -26,11 +26,11 @@ get_header();
                     </span>
 
                     <h1 class="pf-hero__title">
-                        Pflege verstehen für <span class="pf-hero__highlight">Betroffene</span>, Angehörige und Fachkräfte
+                        Alles über Pflege in Deutschland. <span class="pf-hero__highlight">Nachrichten</span>, Wissen und Geschichten aus der Pflegewelt.
                     </h1>
 
                     <p class="pf-hero__subtitle">
-                        Alles rund um Pflegegrade, Pflegeleistungen, Pflegearten und Pflegeberufe — verständlich erklärt.
+                        pflegede.com ist das unabhängige Magazin für die Pflegebranche in Deutschland. Von aktuellen Neuigkeiten bis zu hilfreichen Ratgebern und persönlichen Erfahrungsberichten. Geprüft von Pflegefachkräften und Sozialrechtlern.
                     </p>
 
                     <!-- Search Bar -->
@@ -184,8 +184,8 @@ get_header();
                     <div class="pf-trust__item">
                         <div class="pf-trust__icon"><i class="bi bi-gift"></i></div>
                         <div>
-                            <div class="pf-trust__title">Kostenlos &amp; unabhängig</div>
-                            <div class="pf-trust__text">Keine bezahlte Werbung im redaktionellen Bereich.</div>
+                            <div class="pf-trust__title">Redaktionell &amp; unabhängig</div>
+                            <div class="pf-trust__text">Unsere redaktionellen Inhalte entstehen unabhängig von kommerziellen Interessen.</div>
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@ get_header();
             <?php
             $quick_tiles = array(
                 array(
-                    'url'   => home_url( '/pflegegrade/' ),
+                    'url'   => home_url( '#' ),
                     'img'   => 'quick-pflegegrad.jpg',
                     'alt'   => 'Pflegegrad Einstufung und Beratung',
                     'icon'  => 'bi-clipboard2-pulse',
@@ -216,7 +216,7 @@ get_header();
                     'desc'  => 'Einstufung &amp; Antrag',
                 ),
                 array(
-                    'url'   => home_url( '/leistungen/' ),
+                    'url'   => home_url( '#' ),
                     'img'   => 'quick-leistungen.jpg',
                     'alt'   => 'Pflegeleistungen — Geld- und Sachleistungen',
                     'icon'  => 'bi-wallet2',
@@ -224,7 +224,7 @@ get_header();
                     'desc'  => 'Geld- &amp; Sachleistungen',
                 ),
                 array(
-                    'url'   => home_url( '/pflegearten/' ),
+                    'url'   => home_url( '#' ),
                     'img'   => 'quick-pflegearten.jpg',
                     'alt'   => 'Pflegearten — ambulant, stationär und häuslich',
                     'icon'  => 'bi-house-heart',
@@ -232,18 +232,26 @@ get_header();
                     'desc'  => 'Ambulant, stationär, häuslich',
                 ),
                 array(
-                    'url'   => home_url( '/ratgeber/' ),
+                    'url'   => home_url( '#' ),
+                    'img'   => 'quick-pflegearten.jpg',
+                    'alt'   => 'Pflegearten — ambulant, stationär und häuslich',
+                    'icon'  => 'bi-house-heart',
+                    'title' => 'Pflegearten',
+                    'desc'  => 'Ambulant, stationär, häuslich',
+                ),
+                array(
+                    'url'   => home_url( '#' ),
                     'img'   => 'quick-ratgeber.jpg',
                     'alt'   => 'Ratgeber für pflegende Angehörige',
                     'icon'  => 'bi-journal-text',
-                    'title' => 'Ratgeber',
-                    'desc'  => 'Tipps für Angehörige',
+                    'title' => 'Pflegeberufe',
+                    'desc'  => 'Ausbildung, Gehalt & Karriere',
                 ),
             );
             ?>
             <div class="row g-4 mt-2">
                 <?php foreach ( $quick_tiles as $tile ) : ?>
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-2" style="width: 19.666667%;">
                     <a href="<?php echo esc_url( $tile['url'] ); ?>" class="pf-quick__tile">
                         <span class="pf-quick__media">
                             <img src="<?php echo esc_url( PFLEGEDE_URI . '/assets/images/' . $tile['img'] ); ?>"
@@ -437,10 +445,10 @@ get_header();
                         </tbody>
                     </table>
                 </div>
-                <div class="pf-table-foot">
-                    <i class="bi bi-info-circle"></i>
-                    Quellenhinweis: Beträge gemäß SGB XI, gültig ab 2024/2025. Tabelle muss jährlich aktualisiert werden.
-                </div>
+                <!--<div class="pf-table-foot">-->
+                <!--    <i class="bi bi-info-circle"></i>-->
+                <!--    Quellenhinweis: Beträge gemäß SGB XI, gültig ab 2024/2025. Tabelle muss jährlich aktualisiert werden.-->
+                <!--</div>-->
             </div>
         </div>
     </section>
@@ -461,7 +469,7 @@ get_header();
                 <div class="col-sm-6 col-lg-3">
                     <div class="pf-stat">
                         <div class="pf-stat__icon"><i class="bi bi-people-fill"></i></div>
-                        <div class="pf-stat__value">5,6 Mio.</div>
+                        <div class="pf-stat__value">5,7 Million.</div>
                         <div class="pf-stat__label">Pflegebedürftige in Deutschland</div>
                         <div class="pf-stat__src">Statistisches Bundesamt, 2023</div>
                     </div>
@@ -469,7 +477,7 @@ get_header();
                 <div class="col-sm-6 col-lg-3">
                     <div class="pf-stat">
                         <div class="pf-stat__icon"><i class="bi bi-heart-pulse"></i></div>
-                        <div class="pf-stat__value">3,4 Mio.</div>
+                        <div class="pf-stat__value">3,4 Million.</div>
                         <div class="pf-stat__label">Pflegende Angehörige</div>
                         <div class="pf-stat__src">Bundesministerium für Gesundheit, 2023</div>
                     </div>
@@ -636,15 +644,16 @@ get_header();
         <div class="container position-relative">
             <div class="row align-items-center g-4">
                 <div class="col-lg-6">
-                    <span class="pf-newsletter__eyebrow"><i class="bi bi-envelope-paper"></i> Newsletter</span>
+                    <span class="pf-newsletter__eyebrow"><i class="bi bi-envelope-paper"></i> Newsletter </span>
                     <h2 class="pf-newsletter__title">Pflegenews &amp; Gesetzesänderungen</h2>
                     <p class="pf-newsletter__sub">
-                        Bleiben Sie informiert — kostenloser Newsletter, kein Spam. Gesetzliche Änderungen, neue Pflegegelder und praktische Tipps direkt in Ihr Postfach.
+                        Bleiben Sie informiert. Kostenloser Newsletter, kein Spam. Aktuelle Pflegenachrichten und praktische Tipps direkt in Ihr Postfach.
                     </p>
                     <ul class="pf-newsletter__bullets">
-                        <li><i class="bi bi-check-circle-fill"></i> Aktuelle Gesetzesänderungen</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Neue Pflegegelder &amp; Leistungen</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Praktische Tipps für den Pflegealltag</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Aktuelle Nachrichten aus der Pflegebranche</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Neue Pflegegelder & Leistungen</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Tipps für pflegende Angehörige</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Praxistipps für den Pflegealltag</li>
                     </ul>
                 </div>
                 <div class="col-lg-6">
@@ -655,7 +664,7 @@ get_header();
                             <input type="email" id="pfNewsletterEmail" name="email" required placeholder="ihre.email@beispiel.de" />
                             <button type="submit" class="pf-newsletter__btn">
                                 <i class="bi bi-send-fill"></i>
-                                <span>Anmelden</span>
+                                <span>Kostenlos anmelden</span>
                             </button>
                         </div>
                         <p class="pf-newsletter__note">
