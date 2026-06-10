@@ -38,43 +38,46 @@
                 </a>
             </div>
 
-            <!-- ── Pflegegrade ── -->
+            <!-- ── Pflege-Themen ── -->
             <div class="col-lg-2 col-md-3 col-sm-6">
-                <h6 class="footer-heading">Pflegegrade</h6>
+                <h6 class="footer-heading">Pflege-Themen</h6>
                 <ul class="footer-links-list">
                     <li><a href="<?php echo esc_url( home_url( '/pflegegrade/pflegegrad-1/' ) ); ?>">Pflegegrad 1</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/pflegegrade/pflegegrad-2/' ) ); ?>">Pflegegrad 2</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/pflegegrade/pflegegrad-3-5/' ) ); ?>">Pflegegrad 3–5</a></li>
-                </ul>
-            </div>
-
-            <!-- ── Pflegearten ── -->
-            <div class="col-lg-2 col-md-3 col-sm-6">
-                <h6 class="footer-heading">Pflegearten</h6>
-                <ul class="footer-links-list">
-                    <li><a href="<?php echo esc_url( home_url( '/pflegearten/ambulante-pflege/' ) ); ?>">Ambulante Pflege</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/pflegearten/haeusliche-pflege/' ) ); ?>">Häusliche Pflege</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/pflegearten/stationaere-pflege/' ) ); ?>">Stationäre Pflege</a></li>
-                </ul>
-            </div>
-
-            <!-- ── Leistungen ── -->
-            <div class="col-lg-2 col-md-3 col-sm-6">
-                <h6 class="footer-heading">Leistungen</h6>
-                <ul class="footer-links-list">
                     <li><a href="<?php echo esc_url( home_url( '/leistungen/pflegegeld/' ) ); ?>">Pflegegeld</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/leistungen/hilfsmittel/' ) ); ?>">Hilfsmittel</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/leistungen/verhinderungspflege/' ) ); ?>">Verhinderungspflege</a></li>
                 </ul>
             </div>
 
-            <!-- ── Über uns ── -->
+            <!-- ── Unternehmen ── -->
             <div class="col-lg-2 col-md-3 col-sm-6">
-                <h6 class="footer-heading">Über uns</h6>
+                <h6 class="footer-heading">Unternehmen</h6>
+                <ul class="footer-links-list">
+                    <li><a href="<?php echo esc_url( home_url( '/ueber-uns/' ) ); ?>">Über uns</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/autoren/' ) ); ?>">Autoren</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <!-- ── Transparenz ── -->
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <h6 class="footer-heading">Transparenz</h6>
+                <ul class="footer-links-list">
+                    <li><a href="<?php echo esc_url( home_url( '/redaktionsrichtlinie/' ) ); ?>">Redaktionsrichtlinie</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/redaktioneller-prozess/' ) ); ?>">Redaktioneller Prozess</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/quellen/' ) ); ?>">Quellen</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/hinweis/' ) ); ?>">Hinweis & Haftung</a></li>
+                </ul>
+            </div>
+
+            <!-- ── Rechtliches ── -->
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <h6 class="footer-heading">Rechtliches</h6>
                 <ul class="footer-links-list">
                     <li><a href="<?php echo esc_url( home_url( '/impressum/' ) ); ?>">Impressum</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/datenschutz/' ) ); ?>">Datenschutz</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>">Kontakt</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/cookie-richtlinie/' ) ); ?>">Cookie-Richtlinie</a></li>
                 </ul>
             </div>
 
@@ -103,7 +106,9 @@
                         <span class="footer-sep">·</span>
                         <a href="<?php echo esc_url( home_url( '/datenschutz/' ) ); ?>">Datenschutz</a>
                         <span class="footer-sep">·</span>
-                        <a href="<?php echo esc_url( home_url( '/cookie-einstellungen/' ) ); ?>">Cookie-Einstellungen</a>
+                        <a href="<?php echo esc_url( home_url( '/cookie-richtlinie/' ) ); ?>">Cookie-Richtlinie</a>
+                        <span class="footer-sep">·</span>
+                        <a href="<?php echo esc_url( home_url( '/hinweis/' ) ); ?>">Hinweis</a>
                     </p>
                 </div>
             </div>
