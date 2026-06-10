@@ -36,6 +36,16 @@ function pflegede_enqueue_assets() {
         PFLEGEDE_VERSION
     );
 
+    // Pages CSS — legal, trust, about, contact, authors, sources pages
+    if ( is_page() && ! is_front_page() ) {
+        wp_enqueue_style(
+            'pflegede-pages',
+            PFLEGEDE_URI . '/assets/css/pages.css',
+            array( 'pflegede-main' ),
+            PFLEGEDE_VERSION
+        );
+    }
+
     // Blog styles — only on blog-related pages
     if ( is_home() || is_single() || is_archive() || is_category() || is_tag() ) {
         wp_enqueue_style(
