@@ -1469,6 +1469,7 @@ h1,h2,h3,h4,h5,h6 { font-weight: 700; line-height: 1.25; color: var(--pf-text); 
   display: block;
 }
 .form-label-premium .req { color: var(--pf-red); margin-left: 2px; }
+.form-label-optional { font-size: .75rem; font-weight: 500; color: var(--pf-text-muted); margin-left: 4px; }
 
 .input-with-icon {
   position: relative;

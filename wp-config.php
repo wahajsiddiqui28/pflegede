@@ -26,12 +26,13 @@ define( 'DB_NAME', 'pflegede' );
 define( 'DB_USER', 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'Root@123' );
+// define( 'DB_PASSWORD', 'Root@123' ); //Home Laptop 
+define( 'DB_PASSWORD', 'frdp123' ); //Office Laptop
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
 
-/** Database charset to use in creating database tables. */
+/** Databa se charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
 
 /** The database collate type. Don't change this if in doubt. */
@@ -89,7 +90,14 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
-
+/** Pflegede SMTP — used by theme's inc/smtp.php (phpmailer_init) */
+define( 'PFLEGEDE_SMTP_HOST', 'pflegede.com' );
+define( 'PFLEGEDE_SMTP_PORT', 465 );
+define( 'PFLEGEDE_SMTP_SECURE', 'ssl' );   // 465 = ssl, 587 = tls
+define( 'PFLEGEDE_SMTP_USER', 'info@pflegede.com' );
+define( 'PFLEGEDE_SMTP_PASS', 'TczC;aFTFgBg#hVg' );
+define( 'PFLEGEDE_SMTP_FROM', 'info@pflegede.com' );
+define( 'PFLEGEDE_SMTP_FROM_NAME', 'pflegede.com' );
 
 /* That's all, stop editing! Happy publishing. */
 

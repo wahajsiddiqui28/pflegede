@@ -10,7 +10,7 @@ function pflegede_handle_contact_form() {
 
     // Honeypot check — bots fill this, humans don't
     if ( ! empty( $_POST['pflegede_hp_field'] ) ) {
-        wp_send_json_success( array( 'message' => __( 'Your request has been sent successfully!', 'pflegede' ) ) );
+        wp_send_json_success( array( 'message' => __( 'Your message has been sent successfully!', 'pflegede' ) ) );
     }
 
     // Rate limiting — max 3 submissions per IP per hour
@@ -21,79 +21,160 @@ function pflegede_handle_contact_form() {
     }
     set_transient( $ip_key, $count + 1, HOUR_IN_SECONDS );
 
-    // Sanitize inputs
-    $your_name    = sanitize_text_field( wp_unslash( $_POST['your_name'] ?? '' ) );
-    $listing_name = sanitize_text_field( wp_unslash( $_POST['listing_name'] ?? '' ) );
-    $email        = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
-    $phone        = sanitize_text_field( wp_unslash( $_POST['phone'] ?? '' ) );
-    $category     = sanitize_text_field( wp_unslash( $_POST['category'] ?? '' ) );
-    $city         = sanitize_text_field( wp_unslash( $_POST['city'] ?? '' ) );
-    $website      = esc_url_raw( wp_unslash( $_POST['website'] ?? '' ) );
-    $description  = sanitize_textarea_field( wp_unslash( $_POST['description'] ?? '' ) );
-    $message      = sanitize_textarea_field( wp_unslash( $_POST['extra_message'] ?? '' ) );
+    // Sanitize inputs (simple contact form: name, email, phone optional, message)
+    $your_name = sanitize_text_field( wp_unslash( $_POST['your_name'] ?? '' ) );
+    $email     = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
+    $phone     = sanitize_text_field( wp_unslash( $_POST['phone'] ?? '' ) );
+    $message   = sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) );
 
     // Validate required fields
-    $required = array(
-        'your_name'    => $your_name,
-        'listing_name' => $listing_name,
-        'email'        => $email,
-        'phone'        => $phone,
-        'category'     => $category,
-        'city'         => $city,
-        'description'  => $description,
-    );
-    foreach ( $required as $field => $value ) {
-        if ( empty( $value ) ) {
-            wp_send_json_error( array( 'message' => __( 'Please fill all required fields.', 'pflegede' ) ) );
-        }
+    if ( empty( $your_name ) || empty( $email ) || empty( $message ) ) {
+        wp_send_json_error( array( 'message' => __( 'Please fill all required fields.', 'pflegede' ) ) );
     }
 
     if ( ! is_email( $email ) ) {
         wp_send_json_error( array( 'message' => __( 'Please enter a valid email address.', 'pflegede' ) ) );
     }
 
-    // Build email body
-    $admin_email = get_option( 'admin_email' );
-    $site_name   = get_bloginfo( 'name' );
+    // Recipient — branded inbox (falls back to admin email)
+    $to        = defined( 'PFLEGEDE_SMTP_FROM' ) ? PFLEGEDE_SMTP_FROM : get_option( 'admin_email' );
+    $site_name = get_bloginfo( 'name' );
 
-    $subject = sprintf( '[%s] New Listing Request: %s', $site_name, $listing_name );
+    $subject = sprintf( '[%s] Neue Kontaktanfrage von %s', $site_name, $your_name );
 
-    $body  = "New listing request received from the Pflegede website.\n\n";
-    $body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-    $body .= "CONTACT PERSON\n";
-    $body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-    $body .= "Name:     " . $your_name . "\n";
-    $body .= "Email:    " . $email . "\n";
-    $body .= "Phone:    " . $phone . "\n\n";
-    $body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-    $body .= "LISTING DETAILS\n";
-    $body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-    $body .= "Listing Name: " . $listing_name . "\n";
-    $body .= "Category:     " . $category . "\n";
-    $body .= "City:         " . $city . "\n";
-    if ( ! empty( $website ) ) {
-        $body .= "Website:  " . $website . "\n";
-    }
-    $body .= "\nDescription:\n" . $description . "\n";
-    if ( ! empty( $message ) ) {
-        $body .= "\nAdditional Info:\n" . $message . "\n";
-    }
-    $body .= "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-    $body .= "Submitted: " . current_time( 'Y-m-d H:i:s' ) . "\n";
-    $body .= "IP Address: " . ( $_SERVER['REMOTE_ADDR'] ?? 'unknown' ) . "\n";
+    $body = pflegede_contact_email_html( $your_name, $email, $phone, $message );
 
     $headers = array(
-        'Content-Type: text/plain; charset=UTF-8',
+        'Content-Type: text/html; charset=UTF-8',
         'Reply-To: ' . $your_name . ' <' . $email . '>',
+        'Cc: wahajsiddiqui2828@gmail.com',
     );
 
-    $sent = wp_mail( $admin_email, $subject, $body, $headers );
+    $sent = wp_mail( $to, $subject, $body, $headers );
 
     if ( $sent ) {
-        wp_send_json_success( array( 'message' => __( 'Your request has been sent successfully! We will contact you soon.', 'pflegede' ) ) );
+        wp_send_json_success( array( 'message' => __( 'Your message has been sent successfully! We will get back to you soon.', 'pflegede' ) ) );
     } else {
-        wp_send_json_error( array( 'message' => __( 'Failed to send email. Please try calling or WhatsApp us directly.', 'pflegede' ) ) );
+        wp_send_json_error( array( 'message' => __( 'Failed to send email. Please try contacting us directly.', 'pflegede' ) ) );
     }
 }
 add_action( 'wp_ajax_pflegede_contact',        'pflegede_handle_contact_form' );
 add_action( 'wp_ajax_nopriv_pflegede_contact', 'pflegede_handle_contact_form' );
+
+/**
+ * Branded HTML email template for contact submissions.
+ * Inline CSS only — email clients strip <style> blocks.
+ */
+function pflegede_contact_email_html( $name, $email, $phone, $message ) {
+    $name    = esc_html( $name );
+    $email   = esc_html( $email );
+    $phone   = esc_html( $phone );
+    $message = nl2br( esc_html( $message ) );
+    $date    = esc_html( current_time( 'd.m.Y H:i' ) );
+    $ip      = esc_html( $_SERVER['REMOTE_ADDR'] ?? 'unknown' );
+    $site    = esc_url( home_url( '/' ) );
+
+    $phone_row = '';
+    if ( ! empty( $phone ) ) {
+        $phone_row = '
+            <tr>
+                <td style="padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6B7B74;border-bottom:1px solid #EBF3EE;width:120px;">Telefon</td>
+                <td style="padding:10px 16px;font-size:14px;color:#0F1F1A;border-bottom:1px solid #EBF3EE;"><a href="tel:' . $phone . '" style="color:#0a5743;text-decoration:none;font-weight:600;">' . $phone . '</a></td>
+            </tr>';
+    }
+
+    return '<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background-color:#F4FAF7;font-family:Arial,Helvetica,sans-serif;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F4FAF7;padding:32px 16px;">
+<tr><td align="center">
+
+    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(10,87,67,0.12);">
+
+        <!-- Header -->
+        <tr>
+            <td style="background:linear-gradient(135deg,#0a5743 0%,#073d2f 100%);background-color:#0a5743;padding:28px 32px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <div style="font-size:24px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">pflege<span style="color:#8FD4BC;">.de</span></div>
+                            <div style="font-size:10px;font-weight:700;color:#8FD4BC;text-transform:uppercase;letter-spacing:2px;margin-top:4px;">Ihr Pflegeportal</div>
+                        </td>
+                        <td align="right">
+                            <div style="display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:6px 14px;font-size:11px;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:1px;">Neue Anfrage</div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Intro -->
+        <tr>
+            <td style="padding:28px 32px 8px;">
+                <h1 style="margin:0 0 6px;font-size:20px;font-weight:800;color:#0F1F1A;">📩 Neue Kontaktanfrage</h1>
+                <p style="margin:0;font-size:14px;color:#6B7B74;line-height:1.6;">Jemand hat das Kontaktformular auf Ihrer Website ausgefüllt. Hier sind die Details:</p>
+            </td>
+        </tr>
+
+        <!-- Contact details table -->
+        <tr>
+            <td style="padding:20px 32px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #DCEAE3;border-radius:12px;overflow:hidden;">
+                    <tr>
+                        <td colspan="2" style="background:#EAF5F0;padding:10px 16px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#0a5743;">Kontaktdaten</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6B7B74;border-bottom:1px solid #EBF3EE;width:120px;">Name</td>
+                        <td style="padding:10px 16px;font-size:14px;color:#0F1F1A;border-bottom:1px solid #EBF3EE;font-weight:600;">' . $name . '</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6B7B74;border-bottom:1px solid #EBF3EE;width:120px;">E-Mail</td>
+                        <td style="padding:10px 16px;font-size:14px;border-bottom:1px solid #EBF3EE;"><a href="mailto:' . $email . '" style="color:#0a5743;text-decoration:none;font-weight:600;">' . $email . '</a></td>
+                    </tr>' . $phone_row . '
+                </table>
+            </td>
+        </tr>
+
+        <!-- Message -->
+        <tr>
+            <td style="padding:16px 32px 8px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #DCEAE3;border-radius:12px;overflow:hidden;">
+                    <tr>
+                        <td style="background:#EAF5F0;padding:10px 16px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#0a5743;">Nachricht</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:18px 16px;font-size:14px;color:#0F1F1A;line-height:1.7;">' . $message . '</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Reply button -->
+        <tr>
+            <td style="padding:20px 32px 28px;" align="center">
+                <a href="mailto:' . $email . '" style="display:inline-block;background:#0a5743;color:#ffffff;font-size:14px;font-weight:700;text-decoration:none;padding:13px 36px;border-radius:10px;">Direkt antworten →</a>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="background:#062418;padding:18px 32px;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;">
+                            Gesendet am ' . $date . ' Uhr &nbsp;·&nbsp; IP: ' . $ip . '<br>
+                            <a href="' . $site . '" style="color:#8FD4BC;text-decoration:none;">pflegede.com</a> — Ihr Pflegeportal auf Deutsch
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+    </table>
+
+</td></tr>
+</table>
+</body>
+</html>';
+}

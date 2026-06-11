@@ -1,11 +1,12 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-define( 'PFLEGEDE_VERSION', '2.13.0' );
+define( 'PFLEGEDE_VERSION', '2.15.1' );
 define( 'PFLEGEDE_DIR', get_template_directory() );
 define( 'PFLEGEDE_URI', get_template_directory_uri() );
 
 require_once PFLEGEDE_DIR . '/inc/security.php';
+require_once PFLEGEDE_DIR . '/inc/smtp.php';
 require_once PFLEGEDE_DIR . '/inc/nav-walker.php';
 require_once PFLEGEDE_DIR . '/inc/enqueue.php';
 require_once PFLEGEDE_DIR . '/inc/cpt-listings.php';

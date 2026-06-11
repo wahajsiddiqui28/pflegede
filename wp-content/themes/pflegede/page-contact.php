@@ -122,6 +122,7 @@ $all_cats = get_terms( array( 'taxonomy' => 'pflegede_category', 'hide_empty' =>
 
             <!-- ── Right: Form ── -->
             <div class="col-lg-8">
+                <?php if ( false ) : // ── OLD LISTING REQUEST FORM — disabled, preserved for reference ── ?>
                 <div class="contact-form-premium">
                     <div class="contact-form-premium__head">
                         <div class="contact-form-premium__head-icon"><i class="bi bi-pencil-square"></i></div>
@@ -254,6 +255,66 @@ $all_cats = get_terms( array( 'taxonomy' => 'pflegede_category', 'hide_empty' =>
                             <button type="submit" class="contact-submit-btn w-100" id="contactSubmitBtn">
                                 <i class="bi bi-send-fill"></i>
                                 <span><?php esc_html_e( 'Send Listing Request', 'pflegede' ); ?></span>
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+                <?php endif; // ── END old form ── ?>
+
+                <!-- ── New Simple Contact Form ── -->
+                <div class="contact-form-premium">
+                    <div class="contact-form-premium__head">
+                        <div class="contact-form-premium__head-icon"><i class="bi bi-chat-dots"></i></div>
+                        <div>
+                            <h2 class="contact-form-premium__title"><?php esc_html_e( 'Get in Touch', 'pflegede' ); ?></h2>
+                            <p class="contact-form-premium__subtitle"><?php esc_html_e( 'We usually reply within 24 hours.', 'pflegede' ); ?></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-premium__body">
+
+                        <!-- Alert messages -->
+                        <div id="contactFormMessage" role="alert" aria-live="polite" style="display:none;"></div>
+
+                        <form id="pflegedeContactForm" novalidate>
+                            <?php wp_nonce_field( 'pflegede_contact_nonce', 'pflegede_contact_nonce' ); ?>
+                            <div style="display:none!important;" aria-hidden="true">
+                                <input type="text" name="pflegede_hp_field" value="" tabindex="-1" autocomplete="off" />
+                            </div>
+                            <input type="hidden" name="action" value="pflegede_contact" />
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="your_name" class="form-label-premium"><?php esc_html_e( 'Name', 'pflegede' ); ?> <span class="req">*</span></label>
+                                    <div class="input-with-icon">
+                                        <i class="bi bi-person"></i>
+                                        <input type="text" id="your_name" name="your_name" class="form-control" required autocomplete="name" placeholder="<?php esc_attr_e( 'John Doe', 'pflegede' ); ?>" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label-premium"><?php esc_html_e( 'Email', 'pflegede' ); ?> <span class="req">*</span></label>
+                                    <div class="input-with-icon">
+                                        <i class="bi bi-envelope"></i>
+                                        <input type="email" id="email" name="email" class="form-control" required autocomplete="email" placeholder="you@example.com" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="phone" class="form-label-premium"><?php esc_html_e( 'Phone Number', 'pflegede' ); ?> <span class="form-label-optional"><?php esc_html_e( '(optional)', 'pflegede' ); ?></span></label>
+                                    <div class="input-with-icon">
+                                        <i class="bi bi-telephone"></i>
+                                        <input type="tel" id="phone" name="phone" class="form-control" autocomplete="tel" placeholder="+49 xxx xxx xxxx" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label-premium"><?php esc_html_e( 'Message', 'pflegede' ); ?> <span class="req">*</span></label>
+                                    <textarea id="message" name="message" class="form-control form-textarea-premium" rows="5" required placeholder="<?php esc_attr_e( 'How can we help you?', 'pflegede' ); ?>"></textarea>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="contact-submit-btn w-100 mt-4" id="contactSubmitBtn">
+                                <i class="bi bi-send-fill"></i>
+                                <span><?php esc_html_e( 'Send Message', 'pflegede' ); ?></span>
                             </button>
                         </form>
 
