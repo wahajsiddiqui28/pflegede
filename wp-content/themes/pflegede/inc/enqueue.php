@@ -92,6 +92,21 @@ function pflegede_enqueue_assets() {
         ) );
     }
 
+    // Kontakt form JS (German) — only on /kontakt/ page
+    if ( is_page( 'kontakt' ) || is_page_template( 'page-kontakt.php' ) ) {
+        wp_enqueue_script(
+            'pflegede-kontakt',
+            PFLEGEDE_URI . '/assets/js/kontakt-form.js',
+            array( 'bootstrap' ),
+            PFLEGEDE_VERSION,
+            true
+        );
+        wp_localize_script( 'pflegede-kontakt', 'pflegedeKontakt', array(
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'sending' => __( 'Wird gesendet ...', 'pflegede' ),
+        ) );
+    }
+
     if ( is_post_type_archive( 'pflegede_listing' ) || is_tax( 'pflegede_category' ) ) {
         wp_localize_script( 'pflegede-main', 'pflegedeListings', array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),

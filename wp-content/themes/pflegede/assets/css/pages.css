@@ -889,6 +889,14 @@ body { background: #f8fafc; }
 .pf-kontakt-alert--success i { color: #16a34a; }
 .pf-kontakt-alert--error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
 .pf-kontakt-alert--error i { color: #dc2626; }
+.pf-kontakt-input input.is-invalid,
+.pf-kontakt-form textarea.is-invalid {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+.pf-kontakt-consent input.is-invalid { outline: 2px solid #ef4444; outline-offset: 2px; }
+.pf-kontakt-submit:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+.pf-kontakt-submit .spinner-border { width: 18px; height: 18px; border-width: 2px; }
 
 /* ──────────────────────────────────────────────────
    About / Über uns

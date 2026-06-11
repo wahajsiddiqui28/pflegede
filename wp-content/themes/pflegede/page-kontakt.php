@@ -93,24 +93,12 @@ get_header();
                         </div>
                     </div>
 
-                    <?php
-                    $kontakt_status = isset( $_GET['kontakt'] ) ? sanitize_text_field( $_GET['kontakt'] ) : '';
-                    if ( $kontakt_status === 'success' ) :
-                    ?>
-                        <div class="pf-kontakt-alert pf-kontakt-alert--success">
-                            <i class="bi bi-check-circle-fill"></i>
-                            <span><strong>Vielen Dank!</strong> Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns in 1–2 Werktagen.</span>
-                        </div>
-                    <?php elseif ( $kontakt_status === 'error' ) : ?>
-                        <div class="pf-kontakt-alert pf-kontakt-alert--error">
-                            <i class="bi bi-exclamation-triangle-fill"></i>
-                            <span>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</span>
-                        </div>
-                    <?php endif; ?>
+                    <!-- AJAX response message -->
+                    <div id="kontaktFormMessage" role="alert" aria-live="polite" style="display:none;"></div>
 
-                    <form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" class="pf-kontakt-form">
-                        <?php wp_nonce_field( 'pflegede_kontakt', 'pflegede_kontakt_nonce' ); ?>
-                        <input type="hidden" name="action" value="pflegede_kontakt_submit">
+                    <form id="pflegedeKontaktForm" class="pf-kontakt-form" novalidate>
+                        <?php wp_nonce_field( 'pflegede_kontakt_nonce', 'pflegede_kontakt_nonce' ); ?>
+                        <input type="hidden" name="action" value="pflegede_kontakt">
                         <div style="position:absolute;left:-9999px;" aria-hidden="true">
                             <input type="text" name="kontakt_hp" tabindex="-1" autocomplete="off">
                         </div>
@@ -149,7 +137,7 @@ get_header();
                             <span>Ich habe die <a href="<?php echo esc_url( home_url( '/datenschutz/' ) ); ?>" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span class="req">*</span></span>
                         </label>
 
-                        <button type="submit" class="pf-kontakt-submit">
+                        <button type="submit" class="pf-kontakt-submit" id="kontaktSubmitBtn">
                             <i class="bi bi-send-fill"></i>
                             <span>Nachricht senden</span>
                         </button>

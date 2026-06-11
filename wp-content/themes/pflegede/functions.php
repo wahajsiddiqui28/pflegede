@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-define( 'PFLEGEDE_VERSION', '2.17.1' );
+define( 'PFLEGEDE_VERSION', '2.18.0' );
 define( 'PFLEGEDE_DIR', get_template_directory() );
 define( 'PFLEGEDE_URI', get_template_directory_uri() );
 
@@ -13,47 +13,6 @@ require_once PFLEGEDE_DIR . '/inc/cpt-listings.php';
 require_once PFLEGEDE_DIR . '/inc/meta-boxes.php';
 require_once PFLEGEDE_DIR . '/inc/helpers.php';
 require_once PFLEGEDE_DIR . '/inc/contact-form.php';
-
-// ── Simple Kontakt Form Handler (page-kontakt.php) ─────────
-function pflegede_handle_kontakt_submit() {
-    $redirect = wp_get_referer() ? wp_get_referer() : home_url( '/kontakt/' );
-
-    // Nonce + honeypot
-    if ( ! isset( $_POST['pflegede_kontakt_nonce'] ) || ! wp_verify_nonce( $_POST['pflegede_kontakt_nonce'], 'pflegede_kontakt' ) ) {
-        wp_safe_redirect( add_query_arg( 'kontakt', 'error', $redirect ) );
-        exit;
-    }
-    if ( ! empty( $_POST['kontakt_hp'] ) ) {
-        wp_safe_redirect( add_query_arg( 'kontakt', 'success', $redirect ) ); // silent fail
-        exit;
-    }
-
-    $name    = isset( $_POST['k_name'] )    ? sanitize_text_field( wp_unslash( $_POST['k_name'] ) )    : '';
-    $email   = isset( $_POST['k_email'] )   ? sanitize_email( wp_unslash( $_POST['k_email'] ) )         : '';
-    $subject = isset( $_POST['k_subject'] ) ? sanitize_text_field( wp_unslash( $_POST['k_subject'] ) ) : '';
-    $message = isset( $_POST['k_message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['k_message'] ) ) : '';
-    $consent = ! empty( $_POST['k_consent'] );
-
-    if ( ! $name || ! $email || ! is_email( $email ) || ! $subject || ! $message || ! $consent ) {
-        wp_safe_redirect( add_query_arg( 'kontakt', 'error', $redirect ) );
-        exit;
-    }
-
-    $to      = get_option( 'admin_email' );
-    $mail_subject = '[pflegede.com Kontakt] ' . $subject;
-    $body    = "Name: {$name}\nE-Mail: {$email}\nBetreff: {$subject}\n\nNachricht:\n{$message}\n\n— Gesendet über das Kontaktformular auf pflegede.com";
-    $headers = array(
-        'Content-Type: text/plain; charset=UTF-8',
-        'Reply-To: ' . $name . ' <' . $email . '>',
-    );
-
-    $sent = wp_mail( $to, $mail_subject, $body, $headers );
-
-    wp_safe_redirect( add_query_arg( 'kontakt', $sent ? 'success' : 'error', $redirect ) . '#k_name' );
-    exit;
-}
-add_action( 'admin_post_nopriv_pflegede_kontakt_submit', 'pflegede_handle_kontakt_submit' );
-add_action( 'admin_post_pflegede_kontakt_submit',        'pflegede_handle_kontakt_submit' );
 
 // ── DEV/PRE-LAUNCH ONLY: Dummy data generator ───────────────
 // Remove this file + line before final production launch.

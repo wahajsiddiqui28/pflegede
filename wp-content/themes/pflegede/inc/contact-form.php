@@ -62,13 +62,81 @@ add_action( 'wp_ajax_pflegede_contact',        'pflegede_handle_contact_form' );
 add_action( 'wp_ajax_nopriv_pflegede_contact', 'pflegede_handle_contact_form' );
 
 /**
+ * Handler für das deutsche Kontaktformular (page-kontakt.php).
+ * Gleiche Pipeline wie das Listing-Formular: AJAX + Honeypot + Rate-Limit + Branded-HTML-Mail.
+ */
+function pflegede_handle_kontakt_form() {
+    // Verify nonce
+    if ( ! isset( $_POST['pflegede_kontakt_nonce'] ) ||
+         ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['pflegede_kontakt_nonce'] ) ), 'pflegede_kontakt_nonce' ) ) {
+        wp_send_json_error( array( 'message' => __( 'Sicherheitsprüfung fehlgeschlagen. Bitte Seite neu laden.', 'pflegede' ) ) );
+    }
+
+    // Honeypot check — bots fill this, humans don't
+    if ( ! empty( $_POST['kontakt_hp'] ) ) {
+        wp_send_json_success( array( 'message' => __( 'Ihre Nachricht wurde erfolgreich gesendet!', 'pflegede' ) ) );
+    }
+
+    // Rate limiting — max 3 submissions per IP per hour (shared bucket with listing form)
+    $ip_key = 'pflegede_contact_' . md5( $_SERVER['REMOTE_ADDR'] ?? 'unknown' );
+    $count  = (int) get_transient( $ip_key );
+    if ( $count >= 3 ) {
+        wp_send_json_error( array( 'message' => __( 'Zu viele Anfragen. Bitte versuchen Sie es später erneut.', 'pflegede' ) ) );
+    }
+    set_transient( $ip_key, $count + 1, HOUR_IN_SECONDS );
+
+    // Sanitize inputs
+    $name    = sanitize_text_field( wp_unslash( $_POST['k_name'] ?? '' ) );
+    $email   = sanitize_email( wp_unslash( $_POST['k_email'] ?? '' ) );
+    $subject = sanitize_text_field( wp_unslash( $_POST['k_subject'] ?? '' ) );
+    $message = sanitize_textarea_field( wp_unslash( $_POST['k_message'] ?? '' ) );
+    $consent = ! empty( $_POST['k_consent'] );
+
+    // Validate required fields
+    if ( empty( $name ) || empty( $email ) || empty( $subject ) || empty( $message ) ) {
+        wp_send_json_error( array( 'message' => __( 'Bitte füllen Sie alle Pflichtfelder aus.', 'pflegede' ) ) );
+    }
+    if ( ! is_email( $email ) ) {
+        wp_send_json_error( array( 'message' => __( 'Bitte geben Sie eine gültige E-Mail-Adresse ein.', 'pflegede' ) ) );
+    }
+    if ( ! $consent ) {
+        wp_send_json_error( array( 'message' => __( 'Bitte stimmen Sie der Datenschutzerklärung zu.', 'pflegede' ) ) );
+    }
+
+    // Recipient — branded inbox (falls back to admin email)
+    $to        = defined( 'PFLEGEDE_SMTP_FROM' ) ? PFLEGEDE_SMTP_FROM : get_option( 'admin_email' );
+    $site_name = get_bloginfo( 'name' );
+
+    $mail_subject = sprintf( '[%s] Kontaktanfrage: %s', $site_name, $subject );
+
+    $body = pflegede_contact_email_html( $name, $email, '', $message, $subject );
+
+    $headers = array(
+        'Content-Type: text/html; charset=UTF-8',
+        'Reply-To: ' . $name . ' <' . $email . '>',
+        'Cc: wahajsiddiqui2828@gmail.com',
+    );
+
+    $sent = wp_mail( $to, $mail_subject, $body, $headers );
+
+    if ( $sent ) {
+        wp_send_json_success( array( 'message' => __( 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns in 1–2 Werktagen.', 'pflegede' ) ) );
+    } else {
+        wp_send_json_error( array( 'message' => __( 'E-Mail konnte nicht gesendet werden. Bitte kontaktieren Sie uns direkt per E-Mail.', 'pflegede' ) ) );
+    }
+}
+add_action( 'wp_ajax_pflegede_kontakt',        'pflegede_handle_kontakt_form' );
+add_action( 'wp_ajax_nopriv_pflegede_kontakt', 'pflegede_handle_kontakt_form' );
+
+/**
  * Branded HTML email template for contact submissions.
  * Inline CSS only — email clients strip <style> blocks.
  */
-function pflegede_contact_email_html( $name, $email, $phone, $message ) {
+function pflegede_contact_email_html( $name, $email, $phone, $message, $subject = '' ) {
     $name    = esc_html( $name );
     $email   = esc_html( $email );
     $phone   = esc_html( $phone );
+    $subject = esc_html( $subject );
     $message = nl2br( esc_html( $message ) );
     $date    = esc_html( current_time( 'd.m.Y H:i' ) );
     $ip      = esc_html( $_SERVER['REMOTE_ADDR'] ?? 'unknown' );
@@ -80,6 +148,15 @@ function pflegede_contact_email_html( $name, $email, $phone, $message ) {
             <tr>
                 <td style="padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6B7B74;border-bottom:1px solid #EBF3EE;width:120px;">Telefon</td>
                 <td style="padding:10px 16px;font-size:14px;color:#0F1F1A;border-bottom:1px solid #EBF3EE;"><a href="tel:' . $phone . '" style="color:#0a5743;text-decoration:none;font-weight:600;">' . $phone . '</a></td>
+            </tr>';
+    }
+
+    $subject_row = '';
+    if ( ! empty( $subject ) ) {
+        $subject_row = '
+            <tr>
+                <td style="padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6B7B74;border-bottom:1px solid #EBF3EE;width:120px;">Betreff</td>
+                <td style="padding:10px 16px;font-size:14px;color:#0F1F1A;border-bottom:1px solid #EBF3EE;font-weight:600;">' . $subject . '</td>
             </tr>';
     }
 
@@ -131,7 +208,7 @@ function pflegede_contact_email_html( $name, $email, $phone, $message ) {
                     <tr>
                         <td style="padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6B7B74;border-bottom:1px solid #EBF3EE;width:120px;">E-Mail</td>
                         <td style="padding:10px 16px;font-size:14px;border-bottom:1px solid #EBF3EE;"><a href="mailto:' . $email . '" style="color:#0a5743;text-decoration:none;font-weight:600;">' . $email . '</a></td>
-                    </tr>' . $phone_row . '
+                    </tr>' . $phone_row . $subject_row . '
                 </table>
             </td>
         </tr>

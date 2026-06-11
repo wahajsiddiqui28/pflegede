@@ -37,7 +37,7 @@ get_header();
                     </div>
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="pf-page-hero__media">
-                            <img src="https://images.unsplash.com/photo-1581579438747-104c53e7a30d?w=900&q=80" alt="Pflegesystem Deutschland">
+                            <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=900&q=80" alt="Pflegesystem Deutschland">
                             <span class="pf-page-hero__media-tag"><i class="bi bi-heart-fill"></i> Mit Sorgfalt erstellt</span>
                         </div>
                     </div>
