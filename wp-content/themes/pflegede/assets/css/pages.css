@@ -558,7 +558,7 @@ body { background: #f8fafc; }
 ────────────────────────────────────────────────── */
 .pf-contact-grid {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns: 1fr 1.1fr;
     gap: 36px;
     align-items: stretch;
 }
@@ -748,6 +748,147 @@ body { background: #f8fafc; }
     font-size: .95rem;
     line-height: 1.6;
 }
+
+/* ──────────────────────────────────────────────────
+   Kontakt Form Card (right side)
+────────────────────────────────────────────────── */
+.pf-kontakt-form-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 28px;
+    padding: 40px;
+    box-shadow: 0 16px 40px -16px rgba(10,87,67,.12);
+    position: relative;
+}
+.pf-kontakt-form-card__head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 2px dashed #d1fae5;
+}
+.pf-kontakt-form-card__icon {
+    width: 54px; height: 54px;
+    background: linear-gradient(135deg, #0a5743, #0e7a5e);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-size: 1.375rem;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px -4px rgba(10,87,67,.35);
+}
+.pf-kontakt-form-card__title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #0a5743;
+    margin: 0 0 4px;
+}
+.pf-kontakt-form-card__subtitle {
+    font-size: .8125rem;
+    color: #9ca3af;
+    margin: 0;
+}
+.pf-kontakt-field { margin-bottom: 18px; }
+.pf-kontakt-field label {
+    display: block;
+    font-size: .8125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 7px;
+}
+.pf-kontakt-field .req { color: #ef4444; }
+.pf-kontakt-input {
+    position: relative;
+}
+.pf-kontakt-input i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 1rem;
+}
+.pf-kontakt-input input,
+.pf-kontakt-form textarea {
+    width: 100%;
+    background: #f9fafb;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 13px 16px 13px 44px;
+    font-size: .9375rem;
+    color: #111827;
+    transition: border-color .2s, background .2s, box-shadow .2s;
+    font-family: inherit;
+}
+.pf-kontakt-form textarea {
+    padding: 13px 16px;
+    resize: vertical;
+    min-height: 110px;
+}
+.pf-kontakt-input input:focus,
+.pf-kontakt-form textarea:focus {
+    outline: none;
+    border-color: #0a5743;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(10,87,67,.08);
+}
+.pf-kontakt-input input::placeholder,
+.pf-kontakt-form textarea::placeholder { color: #9ca3af; }
+.pf-kontakt-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: .8125rem;
+    color: #6b7280;
+    line-height: 1.55;
+    margin: 6px 0 22px;
+    cursor: pointer;
+}
+.pf-kontakt-consent input[type="checkbox"] {
+    margin-top: 3px;
+    accent-color: #0a5743;
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.pf-kontakt-consent a { color: #0a5743; text-decoration: underline; }
+.pf-kontakt-submit {
+    width: 100%;
+    background: linear-gradient(135deg, #0a5743 0%, #0e7a5e 100%);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 15px 22px;
+    font-size: 1rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s, background .2s;
+    box-shadow: 0 10px 24px -6px rgba(10,87,67,.35);
+}
+.pf-kontakt-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -6px rgba(10,87,67,.45);
+}
+.pf-kontakt-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    font-size: .9rem;
+    line-height: 1.5;
+}
+.pf-kontakt-alert i { font-size: 1.125rem; flex-shrink: 0; margin-top: 1px; }
+.pf-kontakt-alert--success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #14532d; }
+.pf-kontakt-alert--success i { color: #16a34a; }
+.pf-kontakt-alert--error { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+.pf-kontakt-alert--error i { color: #dc2626; }
 
 /* ──────────────────────────────────────────────────
    About / Über uns

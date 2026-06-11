@@ -89,7 +89,7 @@ get_header();
                     <!-- Quote block -->
                     <div class="pf-quote-block">
                         <p class="pf-quote-block__text">„Datenschutz ist kein Beiwerk — er ist die Grundlage des Vertrauens. Wir behandeln Ihre Daten so, wie wir wollen, dass unsere behandelt werden."</p>
-                        <div class="pf-quote-block__author">— Pflegede Redaktion</div>
+                        <div class="pf-quote-block__author">— Pflegede.com Redaktion</div>
                     </div>
 
                     <div class="pf-content-card">

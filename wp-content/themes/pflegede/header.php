@@ -32,8 +32,8 @@
                         </svg>
                     </span>
                     <span class="pf-brand__word">
-                        <span class="pf-brand__word-main">pflege</span><span class="pf-brand__word-tld">.de</span>
-                        <span class="pf-brand__tagline">Ihr Pflegeportal</span>
+                        <span class="pf-brand__word-main">pflegede</span><span class="pf-brand__word-tld">.com</span>
+                        <span class="pf-brand__tagline">Pflege in Deutschland</span>
                     </span>
                 <?php endif; ?>
             </a>

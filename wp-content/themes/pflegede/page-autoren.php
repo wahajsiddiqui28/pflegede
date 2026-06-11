@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
  */
 
 add_action( 'wp_head', function() {
-    echo '<meta name="description" content="Das Redaktionsteam von Pflegede: Autorinnen, Autoren und Redaktion mit ihren Themenschwerpunkten und Verantwortlichkeiten.">' . "\n";
+    echo '<meta name="description" content="Das Redaktionsteam von Pflegede.com: Autorinnen, Autoren und Redaktion mit ihren Themenschwerpunkten und Verantwortlichkeiten.">' . "\n";
     echo '<link rel="canonical" href="' . esc_url( home_url( '/autoren/' ) ) . '">' . "\n";
 }, 5 );
 
@@ -16,7 +16,7 @@ $authors = array(
         'initials' => 'TA',
         'name'     => 'Tauqeer Ahmed',
         'role'     => 'Gründer & Redaktionsleitung',
-        'intro'    => 'Tauqeer Ahmed ist Gründer von Pflegede und verantwortet die redaktionelle Ausrichtung. Er legt die inhaltlichen Standards fest, koordiniert das Team und stellt sicher, dass Beiträge auf nachvollziehbaren, offiziellen Quellen beruhen und regelmäßig aktualisiert werden.',
+        'intro'    => 'Tauqeer Ahmed ist Gründer von Pflegede.com und verantwortet die redaktionelle Ausrichtung. Er legt die inhaltlichen Standards fest, koordiniert das Team und stellt sicher, dass Beiträge auf nachvollziehbaren, offiziellen Quellen beruhen und regelmäßig aktualisiert werden.',
         'topics'   => array( 'Redaktionelle Standards', 'Qualitätssicherung', 'Pflegesystem-Überblick' ),
         'resp'     => 'Gesamtverantwortung für Inhalte, finale Freigabe vor Veröffentlichung, Pflege der Quellen- und Update-Richtlinie.',
     ),
@@ -32,7 +32,7 @@ $authors = array(
         'initials' => 'HA',
         'name'     => 'Hassan Abid',
         'role'     => 'Autor',
-        'intro'    => 'Hassan Abid schreibt für Pflegede verständliche Ratgeber rund um Pflegeleistungen und Finanzierung. Er recherchiert auf Basis amtlicher Quellen wie dem SGB XI und den Veröffentlichungen der Pflegekassen.',
+        'intro'    => 'Hassan Abid schreibt für Pflegede.com verständliche Ratgeber rund um Pflegeleistungen und Finanzierung. Er recherchiert auf Basis amtlicher Quellen wie dem SGB XI und den Veröffentlichungen der Pflegekassen.',
         'topics'   => array( 'Pflegegeld & Leistungen', 'Finanzierung', 'Anträge & Fristen' ),
         'resp'     => 'Recherche und Erstellung von Beiträgen in seinem Themenbereich, Dokumentation der Quellen.',
     ),
@@ -40,7 +40,7 @@ $authors = array(
         'initials' => 'MA',
         'name'     => 'Maaz Ahmed',
         'role'     => 'Autor',
-        'intro'    => 'Maaz Ahmed verfasst für Pflegede Beiträge zu häuslicher Pflege und zur Situation pflegender Angehöriger. Sein Ziel ist es, komplexe Abläufe in alltagsnaher Sprache zu erklären.',
+        'intro'    => 'Maaz Ahmed verfasst für Pflegede.com Beiträge zu häuslicher Pflege und zur Situation pflegender Angehöriger. Sein Ziel ist es, komplexe Abläufe in alltagsnaher Sprache zu erklären.',
         'topics'   => array( 'Häusliche Pflege', 'Angehörige', 'Pflegehilfsmittel' ),
         'resp'     => 'Recherche und Erstellung von Beiträgen in seinem Themenbereich, Dokumentation der Quellen.',
     ),
@@ -60,7 +60,7 @@ $authors = array(
                 </nav>
                 <div class="row align-items-center g-5">
                     <div class="col-lg-7">
-                        <span class="pf-page-hero__badge"><i class="bi bi-people-fill"></i> Das Team hinter Pflegede</span>
+                        <span class="pf-page-hero__badge"><i class="bi bi-people-fill"></i> Das Team hinter Pflegede.com</span>
                         <h1 class="pf-page-hero__title">Unsere <span class="pf-page-hero__title-accent">Autorinnen</span><br>& Autoren</h1>
                         <p class="pf-page-hero__desc">Ein festes Redaktionsteam mit klaren Zuständigkeiten — jeder Beitrag ist einer Person zugeordnet und wird vor Veröffentlichung geprüft.</p>
                         <div class="pf-page-hero__stats">
@@ -71,8 +71,8 @@ $authors = array(
                     </div>
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="pf-page-hero__media">
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80" alt="Pflegede Redaktionsteam">
-                            <span class="pf-page-hero__media-tag"><i class="bi bi-people-fill"></i> Pflegede Redaktion</span>
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80" alt="Pflegede.com Redaktionsteam">
+                            <span class="pf-page-hero__media-tag"><i class="bi bi-people-fill"></i> Pflegede.com Redaktion</span>
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@ $authors = array(
             <!-- Intro -->
             <div class="pf-authors-intro">
                 <div class="pf-authors-intro__icon"><i class="bi bi-info-circle"></i></div>
-                <span>Hinter Pflegede steht ein festes Team. Jeder Beitrag ist einer dieser Personen zugeordnet und wird vor der Veröffentlichung von einer zweiten Person aus der Redaktion <strong>geprüft</strong> („Geprüft von").</span>
+                <span>Hinter Pflegede.com steht ein festes Team. Jeder Beitrag ist einer dieser Personen zugeordnet und wird vor der Veröffentlichung von einer zweiten Person aus der Redaktion <strong>geprüft</strong> („Geprüft von").</span>
             </div>
 
             <!-- First 2 Authors -->
@@ -155,7 +155,7 @@ $authors = array(
                     <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1400&q=80" alt="Redaktion im Büro">
                 </div>
                 <div class="pf-accent-card__overlay">
-                    <span class="pf-accent-card__overlay-label"><i class="bi bi-buildings"></i> Pflegede Redaktion</span>
+                    <span class="pf-accent-card__overlay-label"><i class="bi bi-buildings"></i> Pflegede.com Redaktion</span>
                     <h3 class="pf-accent-card__overlay-title">Klare Zuständigkeiten, namentliche Verantwortung — so arbeitet unser Team.</h3>
                 </div>
             </div>

@@ -83,14 +83,77 @@ get_header();
                     </div>
                 </div>
 
-                <!-- Right: Visual image -->
-                <div class="pf-contact-visual">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80" alt="Wir hören zu — Pflegede Team">
-                    <span class="pf-contact-visual__badge"><i class="bi bi-people-fill"></i> Pflegede Redaktion</span>
-                    <div class="pf-contact-visual__bottom">
-                        <h3>Verlässliche Pflege­informationen für Deutschland</h3>
-                        <p>Ein festes Redaktionsteam — jede Anfrage wird persönlich gelesen und beantwortet.</p>
+                <!-- Right: Contact Form -->
+                <div class="pf-kontakt-form-card">
+                    <div class="pf-kontakt-form-card__head">
+                        <div class="pf-kontakt-form-card__icon"><i class="bi bi-pencil-square"></i></div>
+                        <div>
+                            <h2 class="pf-kontakt-form-card__title">Nachricht senden</h2>
+                            <p class="pf-kontakt-form-card__subtitle">Felder mit * sind Pflichtfelder</p>
+                        </div>
                     </div>
+
+                    <?php
+                    $kontakt_status = isset( $_GET['kontakt'] ) ? sanitize_text_field( $_GET['kontakt'] ) : '';
+                    if ( $kontakt_status === 'success' ) :
+                    ?>
+                        <div class="pf-kontakt-alert pf-kontakt-alert--success">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span><strong>Vielen Dank!</strong> Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns in 1–2 Werktagen.</span>
+                        </div>
+                    <?php elseif ( $kontakt_status === 'error' ) : ?>
+                        <div class="pf-kontakt-alert pf-kontakt-alert--error">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            <span>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</span>
+                        </div>
+                    <?php endif; ?>
+
+                    <form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" class="pf-kontakt-form">
+                        <?php wp_nonce_field( 'pflegede_kontakt', 'pflegede_kontakt_nonce' ); ?>
+                        <input type="hidden" name="action" value="pflegede_kontakt_submit">
+                        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                            <input type="text" name="kontakt_hp" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div class="pf-kontakt-field">
+                            <label for="k_name">Name <span class="req">*</span></label>
+                            <div class="pf-kontakt-input">
+                                <i class="bi bi-person"></i>
+                                <input type="text" id="k_name" name="k_name" required placeholder="Ihr Name" autocomplete="name">
+                            </div>
+                        </div>
+
+                        <div class="pf-kontakt-field">
+                            <label for="k_email">E-Mail <span class="req">*</span></label>
+                            <div class="pf-kontakt-input">
+                                <i class="bi bi-envelope"></i>
+                                <input type="email" id="k_email" name="k_email" required placeholder="ihre@email.de" autocomplete="email">
+                            </div>
+                        </div>
+
+                        <div class="pf-kontakt-field">
+                            <label for="k_subject">Betreff <span class="req">*</span></label>
+                            <div class="pf-kontakt-input">
+                                <i class="bi bi-tag"></i>
+                                <input type="text" id="k_subject" name="k_subject" required placeholder="Worum geht es?">
+                            </div>
+                        </div>
+
+                        <div class="pf-kontakt-field">
+                            <label for="k_message">Nachricht <span class="req">*</span></label>
+                            <textarea id="k_message" name="k_message" rows="5" required placeholder="Ihre Nachricht an uns ..."></textarea>
+                        </div>
+
+                        <label class="pf-kontakt-consent">
+                            <input type="checkbox" name="k_consent" value="1" required>
+                            <span>Ich habe die <a href="<?php echo esc_url( home_url( '/datenschutz/' ) ); ?>" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <span class="req">*</span></span>
+                        </label>
+
+                        <button type="submit" class="pf-kontakt-submit">
+                            <i class="bi bi-send-fill"></i>
+                            <span>Nachricht senden</span>
+                        </button>
+                    </form>
                 </div>
 
             </div>

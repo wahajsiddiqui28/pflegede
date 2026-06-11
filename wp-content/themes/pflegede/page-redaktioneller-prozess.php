@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
  */
 
 add_action( 'wp_head', function() {
-    echo '<meta name="description" content="Von der Themenwahl über Recherche und Prüfung bis zur Aktualisierung: der vollständige redaktionelle Prozess bei Pflegede.">' . "\n";
+    echo '<meta name="description" content="Von der Themenwahl über Recherche und Prüfung bis zur Aktualisierung: der vollständige redaktionelle Prozess bei Pflegede.com.">' . "\n";
     echo '<link rel="canonical" href="' . esc_url( home_url( '/redaktioneller-prozess/' ) ) . '">' . "\n";
 }, 5 );
 
@@ -27,7 +27,7 @@ get_header();
                     <div class="col-lg-7">
                         <span class="pf-page-hero__badge"><i class="bi bi-diagram-3"></i> So entstehen unsere Inhalte</span>
                         <h1 class="pf-page-hero__title">In <span class="pf-page-hero__title-accent">9 Schritten</span><br>zum geprüften Beitrag</h1>
-                        <p class="pf-page-hero__desc">Jeder Beitrag auf Pflegede durchläuft einen festen Ablauf, der Verlässlichkeit und Verständlichkeit sicherstellt — von der Themenwahl bis zur Aktualisierung.</p>
+                        <p class="pf-page-hero__desc">Jeder Beitrag auf Pflegede.com durchläuft einen festen Ablauf, der Verlässlichkeit und Verständlichkeit sicherstellt — von der Themenwahl bis zur Aktualisierung.</p>
                         <div class="pf-page-hero__stats">
                             <div class="pf-page-hero__stat-item"><i class="bi bi-list-check"></i> 9 Schritte</div>
                             <div class="pf-page-hero__stat-item"><i class="bi bi-eye"></i> Doppelte Prüfung</div>
@@ -55,7 +55,7 @@ get_header();
 
                     <div class="pf-process-intro">
                         <div class="pf-process-intro__icon"><i class="bi bi-info-circle"></i></div>
-                        <span>Jeder Beitrag auf Pflegede durchläuft einen festen Ablauf, der <strong>Verlässlichkeit und Verständlichkeit</strong> sicherstellt. So entsteht ein Artikel:</span>
+                        <span>Jeder Beitrag auf Pflegede.com durchläuft einen festen Ablauf, der <strong>Verlässlichkeit und Verständlichkeit</strong> sicherstellt. So entsteht ein Artikel:</span>
                     </div>
 
                     <ol class="pf-process-list">
@@ -84,7 +84,7 @@ get_header();
                             <div class="pf-process-num">4</div>
                             <div class="pf-process-content">
                                 <div class="pf-process-content__title"><i class="bi bi-eye-fill"></i> Redaktionelle Prüfung</div>
-                                <p class="pf-process-content__text">Eine zweite Person aus der Redaktion prüft den Entwurf auf inhaltliche Richtigkeit, Verständlichkeit, aktuelle Rechtslage und die korrekte Angabe der Quellen. Jeder Beitrag trägt „Geprüft von [Name]".</p>
+                                <p class="pf-process-content__text">Eine zweite Person aus der Redaktion prüft den Entwurf auf inhaltliche Richtigkeit, Verständlichkeit, aktuelle Rechtslage und die korrekte Angabe der Quellen. Jeder Beitrag trägt „Geprüft von Tauqeer Ahmed".</p>
                             </div>
                         </li>
                     </ol>
@@ -104,7 +104,7 @@ get_header();
                             <div class="pf-process-num">5</div>
                             <div class="pf-process-content">
                                 <div class="pf-process-content__title"><i class="bi bi-patch-check-fill"></i> Fachliche Prüfung</div>
-                                <p class="pf-process-content__text">Wo möglich, lassen wir Beiträge zusätzlich von einer Person mit einschlägigem fachlichem Hintergrund prüfen. Solche Beiträge kennzeichnen wir mit „Fachlich geprüft von [Name]" und Datum.</p>
+                                <p class="pf-process-content__text">Wo möglich, lassen wir Beiträge zusätzlich von einer Person mit einschlägigem fachlichem Hintergrund prüfen. Solche Beiträge kennzeichnen wir mit „Fachlich geprüft von Hassan Abid" und Datum.</p>
                             </div>
                         </li>
                         <li class="pf-process-step">

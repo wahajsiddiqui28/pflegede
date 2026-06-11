@@ -78,7 +78,7 @@ get_header();
                         </div>
                         <div class="pf-accent-card__overlay">
                             <span class="pf-accent-card__overlay-label"><i class="bi bi-geo-alt-fill"></i> Standort Deutschland</span>
-                            <h3 class="pf-accent-card__overlay-title">Pflegede unterliegt deutschem Recht und den Vorgaben der DSGVO.</h3>
+                            <h3 class="pf-accent-card__overlay-title">pflegede.com unterliegt deutschem Recht und den Vorgaben der DSGVO.</h3>
                         </div>
                     </div>
 

@@ -164,7 +164,7 @@ function pflegede_contact_email_html( $name, $email, $phone, $message ) {
                     <tr>
                         <td style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;">
                             Gesendet am ' . $date . ' Uhr &nbsp;·&nbsp; IP: ' . $ip . '<br>
-                            <a href="' . $site . '" style="color:#8FD4BC;text-decoration:none;">pflegede.com</a> — Ihr Pflegeportal auf Deutsch
+                            <a href="' . $site . '" style="color:#8FD4BC;text-decoration:none;">pflegede.com</a> — Pflege in Deutschland
                         </td>
                     </tr>
                 </table>

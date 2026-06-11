@@ -59,7 +59,7 @@ get_header();
                     <div class="pf-about-split">
                         <div>
                             <span class="pf-about-split__eyebrow"><i class="bi bi-info-circle"></i> Was ist Pflegede</span>
-                            <h2 class="pf-about-split__title">Eine Plattform für verlässliche Pflege­informationen</h2>
+                            <h2 class="pf-about-split__title">Eine Plattform für verlässliche Pflegeinformationen</h2>
                             <p class="pf-about-split__text">Pflegede ist eine Informationsplattform rund um Pflege, Betreuung und das Gesundheitssystem in Deutschland. Wir erklären komplexe Themen wie Pflegegrade, Pflegegeld, Seniorenbetreuung und Unterstützungsangebote in verständlicher Sprache — fundiert, aktuell und nachvollziehbar.</p>
                         </div>
                         <div class="pf-about-split__media">
@@ -96,15 +96,15 @@ get_header();
                         <div>
                             <span class="pf-about-split__eyebrow"><i class="bi bi-compass"></i> Unsere Mission</span>
                             <h2 class="pf-about-split__title">Orientierung in einem komplexen System</h2>
-                            <p class="pf-about-split__text">Beim Thema Pflege stehen viele Menschen vor einer unübersichtlichen Informationslage. Wir möchten verlässliche, gut recherchierte und leicht verständliche Inhalte bereitstellen, die bei der Orientierung im deutschen Pflegesystem helfen — ohne Fachjargon, ohne Werbung, ohne Interessenkonflikte.</p>
+                            <p class="pf-about-split__text">Beim Thema Pflege stehen viele Menschen vor einer unübersichtlichen Informationslage. Wir möchten verlässliche, gut recherchierte und leicht verständliche Inhalte bereitstellen, die bei der Orientierung im deutschen Pflegesystem helfen — ohne unverständlichen Fachjargon, ohne Werbung, ohne Interessenkonflikte.</p>
                         </div>
                     </div>
 
                     <!-- Team teaser -->
                     <div class="pf-about-team-teaser">
                         <div class="pf-about-team-teaser__text">
-                            <div class="pf-about-team-teaser__label"><i class="bi bi-people-fill"></i> Redaktionsteam</div>
-                            <h3>Das Team hinter den Inhalten</h3>
+                            <div class="pf-about-team-teaser__label"><i class="bi bi-people-fill"></i> Das Team hinter Pflegede.com</div>
+                            <h3>Das Team hinter Pflegede.com</h3>
                             <p>Jeder Beitrag ist einer benannten Person zugeordnet und wird vor der Veröffentlichung von einer zweiten Person aus der Redaktion geprüft.</p>
                         </div>
                         <a href="<?php echo esc_url( home_url( '/autoren/' ) ); ?>" class="pf-about-team-btn">
@@ -116,7 +116,7 @@ get_header();
                     <!-- Standards quote -->
                     <div class="pf-quote-block">
                         <p class="pf-quote-block__text">„Unsere Inhalte beruhen auf offiziellen und fachlich anerkannten Quellen wie dem BMG, dem SGB XI und den Veröffentlichungen der Pflegekassen — geprüft, aktualisiert und transparent."</p>
-                        <div class="pf-quote-block__author">— Pflegede Redaktion</div>
+                        <div class="pf-quote-block__author">— Pflegede.com Redaktion</div>
                     </div>
 
                     <!-- Disclaimer -->

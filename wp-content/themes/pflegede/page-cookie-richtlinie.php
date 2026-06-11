@@ -70,7 +70,7 @@ get_header();
                                 <div class="pf-cookie-card__subtitle">Erforderlich · § 25 Abs. 2 TDDDG · Ohne Einwilligung</div>
                             </div>
                         </div>
-                        <p class="pf-cookie-card__text">Diese Cookies sind für den Betrieb der Website erforderlich und werden gemäß § 25 Abs. 2 TDDDG <strong>ohne Ihre Einwilligung</strong> gesetzt. Sie ermöglichen grundlegende Funktionen wie Seitennavigation und Zugriff auf gesicherte Bereiche. Ohne diese Cookies kann die Website nicht ordnungsgemäß funktionieren.</p>
+                        <p class="pf-cookie-card__text">Diese Cookies sind für den Betrieb der Website erforderlich und werden gemäß § 25 Abs. 2 TDDDG ohne Ihre Einwilligung gesetzt. Sie ermöglichen grundlegende Funktionen wie Seitennavigation und Zugriff auf gesicherte Bereiche. Ohne diese Cookies kann die Website nicht ordnungsgemäß funktionieren.</p>
                     </div>
 
                     <!-- Mid accent image -->
@@ -80,7 +80,7 @@ get_header();
                         </div>
                         <div class="pf-accent-card__overlay">
                             <span class="pf-accent-card__overlay-label"><i class="bi bi-sliders"></i> Sie haben die Kontrolle</span>
-                            <h3 class="pf-accent-card__overlay-title">Volle Transparenz und Kontrolle über alle Cookies, die wir auf pflegede.com setzen.</h3>
+                            <h3 class="pf-accent-card__overlay-title">Sie haben die volle Kontrolle über alle Cookies, die wir auf pflege.com setzen.</h3>
                         </div>
                     </div>
 

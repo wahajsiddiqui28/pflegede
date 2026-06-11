@@ -22,7 +22,7 @@ get_header();
                 <div class="col-lg-7">
                     <span class="pf-hero__eyebrow">
                         <span class="pf-hero__eyebrow-dot"></span>
-                        Ihr Pflegeportal auf Deutsch
+                        Pflege in Deutschland
                     </span>
 
                     <h1 class="pf-hero__title">
@@ -234,18 +234,18 @@ get_header();
                 array(
                     'url'   => home_url( '#' ),
                     'img'   => 'quick-pflegearten.jpg',
-                    'alt'   => 'Pflegearten — ambulant, stationär und häuslich',
-                    'icon'  => 'bi-house-heart',
-                    'title' => 'Pflegearten',
-                    'desc'  => 'Ambulant, stationär, häuslich',
+                    'alt'   => 'Pflegeberufe — Ausbildung, Gehalt & Karriere',
+                    'icon'  => 'bi-mortarboard',
+                    'title' => 'Pflegeberufe',
+                    'desc'  => 'Ausbildung, Gehalt &amp; Karriere',
                 ),
                 array(
-                    'url'   => home_url( '#' ),
+                    'url'   => home_url( '/ratgeber/' ),
                     'img'   => 'quick-ratgeber.jpg',
-                    'alt'   => 'Ratgeber für pflegende Angehörige',
+                    'alt'   => 'Ratgeber für Betroffene und Angehörige',
                     'icon'  => 'bi-journal-text',
-                    'title' => 'Pflegeberufe',
-                    'desc'  => 'Ausbildung, Gehalt & Karriere',
+                    'title' => 'Ratgeber',
+                    'desc'  => 'Ratgeber für Betroffene und Angehörige',
                 ),
             );
             ?>
@@ -386,7 +386,7 @@ get_header();
                 <div class="col-6 col-md-4 col-lg">
                     <a href="<?php echo esc_url( home_url( '/pflegegrade/pflegegrad-5/' ) ); ?>" class="pf-grade-card pf-grade-card--5">
                         <div class="pf-grade-card__num">5</div>
-                        <div class="pf-grade-card__name">Schwerste Beeintr. + besondere Anforderungen</div>
+                        <div class="pf-grade-card__name">Schwerste Beeinträchtigung der Selbstständigkeit mit besonderen Anforderungen an die pflegerische Versorgung</div>
                         <div class="pf-grade-card__rows">
                             <div class="pf-grade-card__row"><span>Pflegegeld</span><strong>990 €</strong></div>
                             <div class="pf-grade-card__row"><span>Sachleistung</span><strong>2.299 €</strong></div>
@@ -399,7 +399,7 @@ get_header();
             <div class="pf-table-wrap mt-5">
                 <div class="pf-table-head">
                     <h3 class="pf-table-head__title"><i class="bi bi-table"></i> Pflegegeld-Übersichtstabelle 2025</h3>
-                    <span class="pf-table-head__badge">SGB XI · gültig ab 2024/2025</span>
+                    <span class="pf-table-head__badge">SGB XI · gültig ab 2025</span>
                 </div>
                 <div class="table-responsive">
                     <table class="pf-table">
@@ -438,7 +438,7 @@ get_header();
                             </tr>
                             <tr>
                                 <td><span class="pf-pg-chip pf-pg-chip--5">PG 5</span></td>
-                                <td>Schwerste Beeintr. + besondere Anforderungen</td>
+                                <td>Schwerste Beeinträchtigung der Selbstständigkeit mit besonderen Anforderungen an die pflegerische Versorgung</td>
                                 <td class="text-end pf-table-val">990 €</td>
                                 <td class="text-end pf-table-val">2.299 €</td>
                             </tr>
@@ -469,7 +469,7 @@ get_header();
                 <div class="col-sm-6 col-lg-3">
                     <div class="pf-stat">
                         <div class="pf-stat__icon"><i class="bi bi-people-fill"></i></div>
-                        <div class="pf-stat__value">5,7 Million.</div>
+                        <div class="pf-stat__value">5,7 Mio.</div>
                         <div class="pf-stat__label">Pflegebedürftige in Deutschland</div>
                         <div class="pf-stat__src">Statistisches Bundesamt, 2023</div>
                     </div>
@@ -477,7 +477,7 @@ get_header();
                 <div class="col-sm-6 col-lg-3">
                     <div class="pf-stat">
                         <div class="pf-stat__icon"><i class="bi bi-heart-pulse"></i></div>
-                        <div class="pf-stat__value">3,4 Million.</div>
+                        <div class="pf-stat__value">3,4 Mio.</div>
                         <div class="pf-stat__label">Pflegende Angehörige</div>
                         <div class="pf-stat__src">Bundesministerium für Gesundheit, 2023</div>
                     </div>
