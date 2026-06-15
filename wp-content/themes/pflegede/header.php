@@ -65,11 +65,11 @@
                 ) );
                 ?>
 
-                <!-- CTA Button — per Inhaltskonzept: "Pflegedienst finden" → /verzeichnis/ -->
+                <!-- CTA Button — per SEO-Team Menu Spec: Kontakt → /kontakt/ -->
                 <div class="d-flex align-items-center gap-2 pf-header-actions">
-                    <a href="<?php echo esc_url( home_url( '/verzeichnis/' ) ); ?>" class="btn-get-listed pf-cta">
-                        <i class="bi bi-search-heart" aria-hidden="true"></i>
-                        <span>Pflegedienst finden</span>
+                    <a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>" class="btn-get-listed pf-cta">
+                        <i class="bi bi-envelope-paper-heart" aria-hidden="true"></i>
+                        <span>Kontakt</span>
                     </a>
                 </div>
             </div>

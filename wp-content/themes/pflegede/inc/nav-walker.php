@@ -40,13 +40,14 @@ class Pflegede_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 }
 
 function pflegede_fallback_nav() {
-    // Per Inhaltskonzept: Pflegearten, Pflegegrade, Leistungen, Ratgeber, Berufe, Verzeichnis (später)
+    // Per SEO-Team Menu Spec (Hassan Abid): Pflegegrade, Leistungen, Pflegearten, Pflegeberufe, Ratgeber, Über uns
     $pages = array(
-        home_url( '/pflegearten/' )  => 'Pflegearten',
         home_url( '/pflegegrade/' )  => 'Pflegegrade',
         home_url( '/leistungen/' )   => 'Leistungen',
+        home_url( '/pflegearten/' )  => 'Pflegearten',
+        home_url( '/pflegeberufe/' ) => 'Pflegeberufe',
         home_url( '/ratgeber/' )     => 'Ratgeber',
-        home_url( '/pflegeberufe/' ) => 'Berufe',
+        home_url( '/ueber-uns/' )    => 'Über uns',
     );
     echo '<ul class="navbar-nav mx-auto mb-2 mb-lg-0 pf-nav">';
     foreach ( $pages as $url => $label ) {

@@ -117,6 +117,37 @@ function pflegede_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'pflegede_enqueue_assets' );
 
 /**
+ * Google Search Console verification meta tag.
+ * Provided by SEO-Team (Hassan Abid). Injected on every page <head>.
+ */
+function pflegede_gsc_verification() {
+    echo '<meta name="google-site-verification" content="JHuA0-fIOMjlF70iTxKlSxV0bQmeYpzinmLXaRthkj0" />' . "\n";
+}
+add_action( 'wp_head', 'pflegede_gsc_verification', 1 );
+
+/**
+ * Google Analytics 4 (gtag.js) — Property ID G-LXQ9JQERVY.
+ * Loaded on every front-end page; skipped in admin and for logged-in admins
+ * to avoid skewing analytics.
+ */
+function pflegede_google_analytics() {
+    if ( is_admin() || current_user_can( 'manage_options' ) ) {
+        return;
+    }
+    ?>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LXQ9JQERVY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LXQ9JQERVY');
+</script>
+    <?php
+}
+add_action( 'wp_head', 'pflegede_google_analytics', 2 );
+
+/**
  * Inject custom SVG favicon (and theme color) into <head>.
  * Only runs if WordPress site-icon is NOT set in Customizer — site-icon takes precedence.
  */
