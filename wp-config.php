@@ -26,8 +26,8 @@ define( 'DB_NAME', 'pflegede' );
 define( 'DB_USER', 'root' );
 
 /** Database password */
-// define( 'DB_PASSWORD', 'Root@123' ); //Home Laptop 
-define( 'DB_PASSWORD', 'frdp123' ); //Office Laptop
+define( 'DB_PASSWORD', 'Root@123' ); //Home Laptop 
+// define( 'DB_PASSWORD', 'frdp123' ); //Office Laptop
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
