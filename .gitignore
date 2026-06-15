@@ -1,0 +1,22 @@
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backups/
+wp-content/upgrade/
+wp-content/debug.log
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node
+node_modules/
+npm-debug.log
+
+# Local SSH/secrets
+*.pem
+*.key

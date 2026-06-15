@@ -1,0 +1,58 @@
+name: Deploy Pflegede Theme to Live
+
+# When this runs
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'wp-content/themes/pflegede/**'   # Only when theme files change
+      - '.github/workflows/deploy-theme.yml'
+  workflow_dispatch:                       # Allow manual trigger from GitHub UI
+
+# Stop earlier runs if a new push comes in (saves minutes)
+concurrency:
+  group: deploy-theme-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Sync theme via SSH/rsync
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Deploy theme files via rsync
+        run: |
+          rsync -avz --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.gitignore' \
+            --exclude='node_modules' \
+            --exclude='.DS_Store' \
+            --exclude='*.log' \
+            --exclude='PROJECT-NOTES.md' \
+            --exclude='inc/dummy-generator.php' \
+            -e "ssh -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no" \
+            wp-content/themes/pflegede/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_THEME_PATH }}
+
+      - name: Deployment summary
+        if: success()
+        run: |
+          echo "✅ Theme deployed successfully!"
+          echo "🌍 Live: https://pflegede.com"
+          echo "📁 Path: ${{ secrets.REMOTE_THEME_PATH }}"
+          echo "🔖 Commit: ${{ github.sha }}"
