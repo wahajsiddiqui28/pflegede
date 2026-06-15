@@ -135,14 +135,7 @@ function pflegede_google_analytics() {
         return;
     }
     ?>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LXQ9JQERVY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LXQ9JQERVY');
-</script>
+
     <?php
 }
 add_action( 'wp_head', 'pflegede_google_analytics', 2 );

@@ -251,7 +251,7 @@ get_header();
             ?>
             <div class="row g-4 mt-2">
                 <?php foreach ( $quick_tiles as $tile ) : ?>
-                <div class="col-sm-6 col-lg-2" style="width: 19.666667%;">
+                <div class="col-6 col-md-4 col-lg pf-quick__col">
                     <a href="<?php echo esc_url( $tile['url'] ); ?>" class="pf-quick__tile">
                         <span class="pf-quick__media">
                             <img src="<?php echo esc_url( PFLEGEDE_URI . '/assets/images/' . $tile['img'] ); ?>"

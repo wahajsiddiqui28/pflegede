@@ -2031,6 +2031,14 @@ h1,h2,h3,h4,h5,h6 { font-weight: 700; line-height: 1.25; color: var(--pf-text); 
 
 /* ── 3. QUICK FINDER (with images) ──────────────────────── */
 .pf-quick { background: var(--pf-bg); }
+
+/* Quick tiles responsive cols — 2-col mobile, 3-col tablet, 5-col desktop */
+.pf-quick__col { display: flex; }
+.pf-quick__col > .pf-quick__tile { width: 100%; }
+@media (min-width: 992px) {
+    .pf-quick__col { flex: 1 1 0; max-width: 20%; }
+}
+
 .pf-quick__tile {
   position: relative;
   display: flex;
