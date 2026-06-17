@@ -67,14 +67,11 @@ $faqs = array(
                             <div class="pf-page-hero__stat-item"><i class="bi bi-shield-check"></i> SGB XI · Stand 2025</div>
                         </div>
                     </div>
-                    <div class="col-lg-5">
-                        <?php
-                        get_template_part( 'template-parts/hero-contact-form', null, array(
-                            'sub'         => 'Wir melden uns innerhalb von 1–2 Werktagen mit Ihrer Pflegegrad-Frage.',
-                            'subject'     => 'Beratung zu Pflegegrad',
-                            'placeholder' => 'Ihre Frage zum Pflegegrad ...',
-                        ) );
-                        ?>
+                    <div class="col-lg-5 d-none d-lg-block">
+                        <div class="pf-page-hero__media">
+                            <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=900&q=80" alt="Pflegegrade — Begutachtung und Antrag">
+                            <span class="pf-page-hero__media-tag"><i class="bi bi-stars"></i> Pflegegeld 2025</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -145,19 +142,6 @@ $faqs = array(
                                 <li><strong>Pflegegrad 5:</strong> schwerste Beeinträchtigung mit besonders hohem Pflegeaufwand</li>
                             </ul>
                             <p>Welcher Grad im Einzelfall vergeben wird, entscheidet der <strong>Medizinische Dienst</strong> nach einer Begutachtung. Auf den Detailseiten zu jedem Pflegegrad erklären wir die Voraussetzungen und Leistungen jeweils ausführlich.</p>
-                        </div>
-                    </div>
-
-                    <!-- Split section: brain image (relocated from hero) + Begutachtung info -->
-                    <div class="pf-about-split mt-5">
-                        <div class="pf-about-split__media">
-                            <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=900&q=80" alt="Pflegegrade — Begutachtung durch den Medizinischen Dienst">
-                            <span class="pf-about-split__media-badge"><i class="bi bi-clipboard2-pulse"></i> Begutachtung</span>
-                        </div>
-                        <div>
-                            <span class="pf-about-split__eyebrow"><i class="bi bi-search"></i> Medizinischer Dienst</span>
-                            <h2 class="pf-about-split__title">Sechs Lebensbereiche entscheiden über Ihren Pflegegrad</h2>
-                            <p class="pf-about-split__text">Der Medizinische Dienst prüft bei der Begutachtung sechs Module: Mobilität, kognitive Fähigkeiten, Verhalten, Selbstversorgung, krankheitsbezogene Anforderungen und Gestaltung des Alltags. Aus den Punkten ergibt sich der passende Pflegegrad — nachvollziehbar und einheitlich nach SGB XI.</p>
                         </div>
                     </div>
 

@@ -76,14 +76,11 @@ $faqs = array(
                             <div class="pf-page-hero__stat-item"><i class="bi bi-shield-check"></i> SGB XI · Stand 2025</div>
                         </div>
                     </div>
-                    <div class="col-lg-5">
-                        <?php
-                        get_template_part( 'template-parts/hero-contact-form', null, array(
-                            'sub'         => 'Wir melden uns innerhalb von 1–2 Werktagen mit Ihrer Leistungs-Frage.',
-                            'subject'     => 'Beratung zu Pflegeleistungen',
-                            'placeholder' => 'Ihre Frage zu Pflegeleistungen ...',
-                        ) );
-                        ?>
+                    <div class="col-lg-5 d-none d-lg-block">
+                        <div class="pf-page-hero__media">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80" alt="Pflegeleistungen — Pflegegeld und Sachleistungen 2025">
+                            <span class="pf-page-hero__media-tag"><i class="bi bi-stars"></i> Stand 2025</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,7 +137,7 @@ $faqs = array(
                             <p class="pf-about-split__text">Das <strong>Pflegegeld</strong> ist eine Geldleistung, die direkt an die pflegebedürftige Person ausgezahlt wird. Es ist für alle gedacht, die zu Hause von Angehörigen oder Bekannten gepflegt werden. Die <strong>Pflegesachleistungen</strong> dagegen bezahlt die Pflegekasse direkt an einen ambulanten Pflegedienst. Wer beides kombinieren möchte, kann die sogenannte <em>Kombinationsleistung</em> nutzen und so einen Teil des Pflegegeldes behalten.</p>
                         </div>
                         <div class="pf-about-split__media">
-                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80" alt="Pflegegeld und Pflegesachleistungen">
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80" alt="Pflegegeld und Pflegesachleistungen">
                             <span class="pf-about-split__media-badge"><i class="bi bi-cash-coin"></i> Pflegegeld 2025</span>
                         </div>
                     </div>
