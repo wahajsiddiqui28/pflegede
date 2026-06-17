@@ -92,8 +92,16 @@ function pflegede_enqueue_assets() {
         ) );
     }
 
-    // Kontakt form JS (German) — only on /kontakt/ page
-    if ( is_page( 'kontakt' ) || is_page_template( 'page-kontakt.php' ) ) {
+    // Kontakt form JS (German) — on /kontakt/ AND on every page that embeds the hero contact form
+    // (template-parts/hero-contact-form.php). Add new page slugs/templates here whenever you embed it.
+    if (
+        is_page( 'kontakt' )
+        || is_page_template( 'page-kontakt.php' )
+        || is_page( 'pflegegrade' )
+        || is_page_template( 'page-pflegegrade.php' )
+        || is_page( 'leistungen' )
+        || is_page_template( 'page-leistungen.php' )
+    ) {
         wp_enqueue_script(
             'pflegede-kontakt',
             PFLEGEDE_URI . '/assets/js/kontakt-form.js',
