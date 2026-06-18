@@ -69,7 +69,7 @@ $faqs = array(
                     </div>
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="pf-page-hero__media">
-                            <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=900&q=80" alt="Pflegegrade — Begutachtung und Antrag">
+                            <img src="<?php echo esc_url( PFLEGEDE_URI . '/assets/images/pages-image/pflegegrade/pflegegrade-banner-image.webp'); ?>" alt="Pflegegrade — Begutachtung und Antrag">
                             <span class="pf-page-hero__media-tag"><i class="bi bi-stars"></i> Pflegegeld 2025</span>
                         </div>
                     </div>
@@ -148,7 +148,7 @@ $faqs = array(
                     <!-- Mid accent image -->
                     <div class="pf-accent-card">
                         <div class="pf-accent-card__image">
-                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80" alt="Pflegebedürftiger und Pflegekraft">
+                            <img src="<?php echo esc_url( PFLEGEDE_URI . '/assets/images/pages-image/pflegegrade/5-pflegegrade-stand-2025.webp'); ?>" alt="Pflegebedürftiger und Pflegekraft">
                         </div>
                         <div class="pf-accent-card__overlay">
                             <span class="pf-accent-card__overlay-label"><i class="bi bi-stars"></i> 5 Pflegegrade · Stand 2025</span>

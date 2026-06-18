@@ -78,7 +78,7 @@ $faqs = array(
                     </div>
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="pf-page-hero__media">
-                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80" alt="Pflegeleistungen — Pflegegeld und Sachleistungen 2025">
+                            <img src="<?php echo esc_url( PFLEGEDE_URI . '/assets/images/pages-image/leistungen/leistungen-banner-image.webp'); ?>" alt="Pflegeleistungen — Pflegegeld und Sachleistungen 2025">
                             <span class="pf-page-hero__media-tag"><i class="bi bi-stars"></i> Stand 2025</span>
                         </div>
                     </div>
@@ -137,7 +137,7 @@ $faqs = array(
                             <p class="pf-about-split__text">Das <strong>Pflegegeld</strong> ist eine Geldleistung, die direkt an die pflegebedürftige Person ausgezahlt wird. Es ist für alle gedacht, die zu Hause von Angehörigen oder Bekannten gepflegt werden. Die <strong>Pflegesachleistungen</strong> dagegen bezahlt die Pflegekasse direkt an einen ambulanten Pflegedienst. Wer beides kombinieren möchte, kann die sogenannte <em>Kombinationsleistung</em> nutzen und so einen Teil des Pflegegeldes behalten.</p>
                         </div>
                         <div class="pf-about-split__media">
-                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=80" alt="Pflegegeld und Pflegesachleistungen">
+                            <img src="<?php echo esc_url( PFLEGEDE_URI . '/assets/images/pages-image/leistungen/leistungen-image1.webp'); ?>" alt="Pflegegeld und Pflegesachleistungen">
                             <span class="pf-about-split__media-badge"><i class="bi bi-cash-coin"></i> Pflegegeld 2025</span>
                         </div>
                     </div>
@@ -154,7 +154,7 @@ $faqs = array(
                     <!-- Hilfsmittel + Wohnraum split section (image 2) -->
                     <div class="pf-about-split pf-about-split--reverse mt-5">
                         <div class="pf-about-split__media">
-                            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=80" alt="Wohnraumanpassung und Hilfsmittel">
+                            <img src="<?php echo esc_url( PFLEGEDE_URI . '/assets/images/pages-image/leistungen/leistungen-image2.webp'); ?>" alt="Wohnraumanpassung und Hilfsmittel">
                             <span class="pf-about-split__media-badge"><i class="bi bi-tools"></i> Bis 4.180 € Zuschuss</span>
                         </div>
                         <div>

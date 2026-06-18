@@ -2013,6 +2013,276 @@ body { background: #f8fafc; }
 .pf-pg-chip--4 { background: linear-gradient(135deg, #10886b, #34d399); color: #064e3b; }
 .pf-pg-chip--5 { background: linear-gradient(135deg, #d97706, #ea580c); }
 
+
+/* ──────────────────────────────────────────────────
+   Ratgeber — 4 Themen Cards
+────────────────────────────────────────────────── */
+.pf-ratgeber-themen {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+.pf-ratgeber-thema {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 26px 22px 22px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color .2s, transform .25s, box-shadow .25s;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+}
+.pf-ratgeber-thema::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #0a5743, #6ee7b7);
+    opacity: 0;
+    transition: opacity .25s;
+}
+.pf-ratgeber-thema:hover {
+    transform: translateY(-5px);
+    border-color: #0a5743;
+    color: inherit;
+    box-shadow: 0 22px 44px -12px rgba(10,87,67,.2);
+}
+.pf-ratgeber-thema:hover::before { opacity: 1; }
+.pf-ratgeber-thema__icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a5743;
+    font-size: 1.625rem;
+    margin-bottom: 6px;
+    transition: background .25s, color .25s;
+}
+.pf-ratgeber-thema:hover .pf-ratgeber-thema__icon {
+    background: linear-gradient(135deg, #0a5743, #0e7a5e);
+    color: #fff;
+}
+.pf-ratgeber-thema__title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    line-height: 1.3;
+}
+.pf-ratgeber-thema__desc {
+    font-size: .8125rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+    flex: 1;
+}
+.pf-ratgeber-thema__cta {
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: #0a5743;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+    transition: gap .2s;
+}
+.pf-ratgeber-thema:hover .pf-ratgeber-thema__cta { gap: 9px; }
+
+@media (max-width: 991px) {
+    .pf-ratgeber-themen { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 575px) {
+    .pf-ratgeber-themen { grid-template-columns: 1fr; }
+}
+
+/* ──────────────────────────────────────────────────
+   Ratgeber — Newsletter CTA
+────────────────────────────────────────────────── */
+.pf-newsletter-cta {
+    background: linear-gradient(135deg, #062e1f 0%, #0a5743 60%, #0e7a5e 100%);
+    border-radius: 24px;
+    padding: 32px 36px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+.pf-newsletter-cta::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(110,231,183,.18) 0%, transparent 70%);
+    border-radius: 50%;
+}
+.pf-newsletter-cta > * { position: relative; z-index: 1; }
+.pf-newsletter-cta__icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6ee7b7;
+    font-size: 1.75rem;
+    flex-shrink: 0;
+}
+.pf-newsletter-cta__content { flex: 1; }
+.pf-newsletter-cta__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+    color: #fff;
+}
+.pf-newsletter-cta__text {
+    font-size: .9375rem;
+    color: rgba(255,255,255,.78);
+    line-height: 1.55;
+    margin: 0;
+}
+.pf-newsletter-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #6ee7b7;
+    color: #064e3b;
+    font-size: .9rem;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 10px 24px -6px rgba(110,231,183,.4);
+}
+.pf-newsletter-cta__btn:hover {
+    background: #a7f3d0;
+    color: #064e3b;
+    transform: translateY(-2px);
+}
+@media (max-width: 767px) {
+    .pf-newsletter-cta {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px;
+        gap: 18px;
+    }
+}
+
+/* ──────────────────────────────────────────────────
+   Ratgeber — Latest Posts Grid
+────────────────────────────────────────────────── */
+.pf-ratgeber-posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 24px;
+}
+.pf-ratgeber-post {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: border-color .2s, transform .25s, box-shadow .25s;
+}
+.pf-ratgeber-post:hover {
+    transform: translateY(-4px);
+    border-color: #0a5743;
+    box-shadow: 0 22px 44px -12px rgba(10,87,67,.18);
+}
+.pf-ratgeber-post__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+.pf-ratgeber-post__link:hover { color: inherit; }
+.pf-ratgeber-post__thumb {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #f0fdf4;
+}
+.pf-ratgeber-post__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s;
+}
+.pf-ratgeber-post:hover .pf-ratgeber-post__thumb img { transform: scale(1.05); }
+.pf-ratgeber-post__thumb--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    color: #0a5743;
+    font-size: 3rem;
+}
+.pf-ratgeber-post__body { padding: 20px 22px 22px; }
+.pf-ratgeber-post__date {
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #0a5743;
+    margin-bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.pf-ratgeber-post__title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 8px;
+    line-height: 1.35;
+}
+.pf-ratgeber-post__excerpt {
+    font-size: .875rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0 0 12px;
+}
+.pf-ratgeber-post__cta {
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: #0a5743;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap .2s;
+}
+.pf-ratgeber-post:hover .pf-ratgeber-post__cta { gap: 10px; }
+
+@media (max-width: 991px) {
+    .pf-ratgeber-posts { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 575px) {
+    .pf-ratgeber-posts { grid-template-columns: 1fr; }
+}
+
 /* ──────────────────────────────────────────────────
    Leistungen Table Row (icon + name)
 ────────────────────────────────────────────────── */
