@@ -208,7 +208,7 @@ get_header();
             <?php
             $quick_tiles = array(
                 array(
-                    'url'   => home_url( '#' ),
+                    'url'   => home_url( '/pflegegrade/' ),
                     'img'   => 'quick-pflegegrad.jpg',
                     'alt'   => 'Pflegegrad Einstufung und Beratung',
                     'icon'  => 'bi-clipboard2-pulse',
@@ -216,7 +216,7 @@ get_header();
                     'desc'  => 'Einstufung &amp; Antrag',
                 ),
                 array(
-                    'url'   => home_url( '#' ),
+                    'url'   => home_url( '/leistungen' ),
                     'img'   => 'quick-leistungen.jpg',
                     'alt'   => 'Pflegeleistungen — Geld- und Sachleistungen',
                     'icon'  => 'bi-wallet2',
@@ -224,7 +224,7 @@ get_header();
                     'desc'  => 'Geld- &amp; Sachleistungen',
                 ),
                 array(
-                    'url'   => home_url( '#' ),
+                    'url'   => home_url( '/pflegearten/' ),
                     'img'   => 'quick-pflegearten.jpg',
                     'alt'   => 'Pflegearten — ambulant, stationär und häuslich',
                     'icon'  => 'bi-house-heart',
@@ -232,7 +232,7 @@ get_header();
                     'desc'  => 'Ambulant, stationär, häuslich',
                 ),
                 array(
-                    'url'   => home_url( '#' ),
+                    'url'   => home_url( '/pflegeberufe/' ),
                     'img'   => 'quick-pflegearten.jpg',
                     'alt'   => 'Pflegeberufe — Ausbildung, Gehalt & Karriere',
                     'icon'  => 'bi-mortarboard',
