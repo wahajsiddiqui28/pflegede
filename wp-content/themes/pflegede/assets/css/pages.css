@@ -2685,3 +2685,514 @@ body { background: #f8fafc; }
     .pf-accent-card__overlay { left: 20px; right: 20px; bottom: 20px; }
     .pf-accent-card__overlay-title { font-size: 1.125rem; }
 }
+
+/* ════════════════════════════════════════════════════
+   CLUSTER / DETAIL PAGE COMPONENTS
+   (Pflegegrad 1–5 detail pages)
+════════════════════════════════════════════════════ */
+
+/* ── Author byline bar ── */
+.pf-byline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 18px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 14px 22px;
+    margin-bottom: 28px;
+    font-size: .8125rem;
+    color: #6b7280;
+}
+.pf-byline__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    line-height: 1.4;
+}
+.pf-byline__item i { color: #0a5743; font-size: .95rem; }
+.pf-byline__item strong { color: #111827; font-weight: 600; }
+.pf-byline__sep { color: #d1d5db; }
+
+/* ── Lead highlight box (summary under title) ── */
+.pf-lead-box {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    border: 1px solid #bbf7d0;
+    border-left: 5px solid #0a5743;
+    border-radius: 16px;
+    padding: 22px 26px;
+    margin-bottom: 28px;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: #14532d;
+}
+.pf-lead-box strong { color: #0a5743; font-weight: 700; }
+
+/* ── Antrag steps (numbered ordered list) ── */
+.pf-antrag-steps {
+    list-style: none;
+    counter-reset: pf-step;
+    padding: 0;
+    margin: 8px 0 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.pf-antrag-steps li {
+    counter-increment: pf-step;
+    position: relative;
+    padding: 14px 18px 14px 56px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: .9375rem;
+    color: #374151;
+    line-height: 1.55;
+    transition: border-color .2s, box-shadow .2s;
+}
+.pf-antrag-steps li:hover {
+    border-color: #0a5743;
+    box-shadow: 0 8px 22px -10px rgba(10,87,67,.18);
+}
+.pf-antrag-steps li::before {
+    content: counter(pf-step);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #0a5743, #0e7a5e);
+    color: #fff;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8125rem;
+    font-weight: 800;
+}
+
+/* ── Fazit (conclusion) box ── */
+.pf-fazit {
+    background: linear-gradient(160deg, #0a5743 0%, #073d2f 100%);
+    border-radius: 20px;
+    padding: 32px 36px;
+    color: #fff;
+    margin: 40px 0 24px;
+    position: relative;
+    overflow: hidden;
+}
+.pf-fazit::before {
+    content: '';
+    position: absolute;
+    top: -90px; right: -90px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(110,231,183,.16) 0%, transparent 70%);
+    border-radius: 50%;
+}
+.pf-fazit > * { position: relative; z-index: 1; }
+.pf-fazit__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: .7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: #6ee7b7;
+    margin-bottom: 10px;
+}
+.pf-fazit__text {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,.92);
+    margin: 0;
+}
+.pf-fazit__text strong { color: #fff; }
+
+/* ── Detail page table: 3-column with Rechtsgrundlage ── */
+.pf-pg-table td .pf-pg-amount { font-weight: 700; color: #0a5743; white-space: nowrap; }
+.pf-pg-table td .pf-pg-amount--none { color: #9ca3af; font-weight: 600; }
+.pf-pg-table td .pf-pg-law {
+    font-size: .8125rem;
+    color: #6b7280;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@media (max-width: 767px) {
+    .pf-byline { padding: 12px 16px; font-size: .75rem; }
+    .pf-lead-box { padding: 18px 20px; font-size: 1rem; }
+    .pf-fazit { padding: 24px; }
+    .pf-antrag-steps li { padding: 12px 14px 12px 50px; }
+}
+
+/* ════════════════════════════════════════════════════
+   GUIDE / ANLEITUNG PAGE COMPONENTS
+   (Pflegegrad beantragen, MDK-Begutachtung, Widerspruch)
+════════════════════════════════════════════════════ */
+
+/* ── Figure with caption (for process diagrams / charts) ── */
+.pf-figure {
+    margin: 8px 0 28px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: 0 12px 34px -16px rgba(10,87,67,.16);
+}
+.pf-figure__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+}
+.pf-figure__cap {
+    padding: 12px 22px;
+    font-size: .8125rem;
+    color: #6b7280;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.5;
+}
+.pf-figure__cap i { color: #0a5743; }
+
+/* ── Vertical timeline stepper ── */
+.pf-timeline {
+    list-style: none;
+    counter-reset: pf-tl;
+    padding: 0;
+    margin: 8px 0 8px;
+    position: relative;
+}
+.pf-timeline::before {
+    content: '';
+    position: absolute;
+    left: 27px;
+    top: 22px;
+    bottom: 22px;
+    width: 3px;
+    background: linear-gradient(to bottom, #0a5743, #34d399 60%, #bbf7d0);
+    border-radius: 3px;
+}
+.pf-timeline__step {
+    counter-increment: pf-tl;
+    position: relative;
+    display: flex;
+    gap: 22px;
+    padding-bottom: 22px;
+}
+.pf-timeline__step:last-child { padding-bottom: 0; }
+.pf-timeline__node {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #0a5743, #0e7a5e);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.375rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 5px #f8fafc, 0 0 0 7px #d1fae5, 0 10px 22px -6px rgba(10,87,67,.4);
+}
+.pf-timeline__card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 20px 24px;
+    flex: 1;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.pf-timeline__card:hover {
+    border-color: #0a5743;
+    box-shadow: 0 14px 32px -12px rgba(10,87,67,.18);
+    transform: translateX(4px);
+}
+.pf-timeline__title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #0a5743;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.pf-timeline__title .pf-timeline__badge {
+    font-size: .65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    background: #f0fdf4;
+    color: #0a5743;
+    border: 1px solid #bbf7d0;
+    padding: 2px 9px;
+    border-radius: 100px;
+}
+.pf-timeline__text {
+    font-size: .9375rem;
+    color: #4b5563;
+    line-height: 1.65;
+    margin: 0;
+}
+.pf-timeline__text a { color: #0a5743; }
+
+/* ── Frist / fact cards (colored) ── */
+.pf-frist-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 8px 0 24px;
+}
+.pf-frist-card {
+    border-radius: 18px;
+    padding: 24px 20px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 28px -12px rgba(0,0,0,.2);
+}
+.pf-frist-card--1 { background: linear-gradient(150deg, #0a5743, #0e7a5e); }
+.pf-frist-card--2 { background: linear-gradient(150deg, #0d6e53, #10886b); }
+.pf-frist-card--3 { background: linear-gradient(150deg, #d97706, #f59e0b); }
+.pf-frist-card--4 { background: linear-gradient(150deg, #1e40af, #3b82f6); }
+.pf-frist-card__num {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+    letter-spacing: -.02em;
+}
+.pf-frist-card__unit {
+    font-size: .8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    opacity: .85;
+    margin-bottom: 12px;
+}
+.pf-frist-card__desc {
+    font-size: .85rem;
+    line-height: 1.5;
+    opacity: .92;
+    margin: 0;
+}
+.pf-frist-card__icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 1.25rem;
+    opacity: .35;
+}
+
+/* ── Tips checklist ── */
+.pf-tips {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 8px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+.pf-tips li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px 18px;
+    transition: border-color .2s, box-shadow .2s;
+}
+.pf-tips li:hover {
+    border-color: #0a5743;
+    box-shadow: 0 10px 24px -12px rgba(10,87,67,.18);
+}
+.pf-tips__check {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #0a5743, #0e7a5e);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8125rem;
+    margin-top: 1px;
+}
+.pf-tips__check--warn { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.pf-tips__body { font-size: .9rem; color: #4b5563; line-height: 1.55; }
+.pf-tips__body strong { color: #111827; display: block; margin-bottom: 2px; }
+
+/* ── "Wer kann" person cards ── */
+.pf-who-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 8px 0 8px;
+}
+.pf-who-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.pf-who-card:hover {
+    border-color: #0a5743;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px -12px rgba(10,87,67,.16);
+}
+.pf-who-card__icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 12px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    color: #0a5743;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.375rem;
+}
+.pf-who-card__text { font-size: .9rem; color: #374151; line-height: 1.5; margin: 0; }
+.pf-who-card__text strong { color: #111827; }
+
+/* ── Two-outcome cards (Widerspruch) ── */
+.pf-outcome-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 8px 0 8px;
+}
+.pf-outcome {
+    border-radius: 18px;
+    padding: 26px 28px;
+    border: 1px solid;
+}
+.pf-outcome--good { background: linear-gradient(150deg, #f0fdf4, #dcfce7); border-color: #86efac; }
+.pf-outcome--neutral { background: linear-gradient(150deg, #fffbeb, #fef3c7); border-color: #fcd34d; }
+.pf-outcome__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.pf-outcome__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+.pf-outcome--good .pf-outcome__icon { background: linear-gradient(135deg, #16a34a, #22c55e); }
+.pf-outcome--neutral .pf-outcome__icon { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.pf-outcome__title { font-size: 1.0625rem; font-weight: 700; margin: 0; }
+.pf-outcome--good .pf-outcome__title { color: #14532d; }
+.pf-outcome--neutral .pf-outcome__title { color: #78350f; }
+.pf-outcome__text { font-size: .9rem; line-height: 1.6; margin: 0; }
+.pf-outcome--good .pf-outcome__text { color: #166534; }
+.pf-outcome--neutral .pf-outcome__text { color: #92400e; }
+
+/* ── Help resources list ── */
+.pf-help-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.pf-help-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: .9375rem;
+    color: #374151;
+    transition: border-color .2s, transform .2s;
+}
+.pf-help-list li:hover { border-color: #0a5743; transform: translateX(3px); }
+.pf-help-list i {
+    color: #0a5743;
+    font-size: 1.125rem;
+    flex-shrink: 0;
+}
+
+/* ── Quellen / sources ── */
+.pf-sources {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-top: 40px;
+}
+.pf-sources__title {
+    font-size: .8125rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #6b7280;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.pf-sources__title i { color: #0a5743; }
+.pf-sources__stand { font-size: .8125rem; color: #9ca3af; margin: 0 0 14px; }
+.pf-sources__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: pf-src;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.pf-sources__list li {
+    counter-increment: pf-src;
+    position: relative;
+    padding-left: 32px;
+    font-size: .825rem;
+    color: #6b7280;
+    line-height: 1.55;
+}
+.pf-sources__list li::before {
+    content: '[' counter(pf-src) ']';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: #0a5743;
+    font-size: .75rem;
+}
+.pf-sources__list a { color: #0a5743; word-break: break-word; }
+
+/* Guide pages responsive */
+@media (max-width: 991px) {
+    .pf-frist-grid { grid-template-columns: repeat(2, 1fr); }
+    .pf-tips { grid-template-columns: 1fr; }
+    .pf-who-cards { grid-template-columns: 1fr; }
+    .pf-outcome-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 767px) {
+    .pf-timeline::before { left: 23px; }
+    .pf-timeline__node { width: 48px; height: 48px; font-size: 1.125rem; }
+    .pf-timeline__step { gap: 16px; }
+    .pf-frist-grid { grid-template-columns: 1fr; }
+    .pf-sources { padding: 20px; }
+}

@@ -535,7 +535,7 @@ get_header();
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <a href="<?php echo esc_url( home_url( '/leistungen/pflegegeld/pflegegeld-tabelle-2025/' ) ); ?>" class="pf-article">
+                    <a href="<?php echo esc_url( home_url( '/pflegegrade/pflegegrad-widerspruch/' ) ); ?>" class="pf-article">
                         <span class="pf-article__badge pf-article__badge--teal">Leistungen</span>
                         <h3 class="pf-article__title">Pflegegeld 2025 — aktuelle Beträge nach Pflegegrad</h3>
                         <div class="pf-article__meta">
