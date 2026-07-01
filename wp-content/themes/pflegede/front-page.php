@@ -216,7 +216,7 @@ get_header();
                     'desc'  => 'Einstufung &amp; Antrag',
                 ),
                 array(
-                    'url'   => home_url( '/leistungen' ),
+                    'url'   => home_url( '/leistungen/' ),
                     'img'   => 'quick-leistungen.jpg',
                     'alt'   => 'Pflegeleistungen — Geld- und Sachleistungen',
                     'icon'  => 'bi-wallet2',
