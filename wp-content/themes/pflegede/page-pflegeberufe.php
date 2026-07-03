@@ -34,8 +34,8 @@ $berufe_table = array(
 );
 
 $berufe_cards = array(
-    array( 'icon' => 'bi-mortarboard',     'title' => 'Pflegeausbildung',     'desc' => 'Ablauf, Dauer und Voraussetzungen',  'slug' => '/pflegeberufe/pflegeausbildung/' ),
-    array( 'icon' => 'bi-cash-stack',      'title' => 'Gehalt in der Pflege', 'desc' => 'Was Pflegekräfte verdienen',         'slug' => '/pflegeberufe/gehalt-pflege/' ),
+    array( 'icon' => 'bi-mortarboard',     'title' => 'Pflegeausbildung',     'desc' => 'Ablauf, Dauer und Voraussetzungen',  'slug' => '/pflegeberufe/ausbildung/' ),
+    array( 'icon' => 'bi-cash-stack',      'title' => 'Gehalt in der Pflege', 'desc' => 'Was Pflegekräfte verdienen',         'slug' => '/pflegeberufe/gehalt/' ),
     array( 'icon' => 'bi-person-heart',    'title' => 'Altenpflege',          'desc' => 'Arbeiten in der Altenpflege',        'slug' => '/pflegeberufe/altenpflege/' ),
     array( 'icon' => 'bi-hospital',        'title' => 'Krankenpflege',        'desc' => 'Pflegefachkraft im Krankenhaus',     'slug' => '/pflegeberufe/krankenpflege/' ),
     array( 'icon' => 'bi-graph-up-arrow',  'title' => 'Weiterbildung',        'desc' => 'Aufstieg und Spezialisierung',       'slug' => '/pflegeberufe/weiterbildung/' ),
@@ -141,7 +141,7 @@ $faqs = array(
                     <div class="pf-content-card">
                         <div class="pf-legal-content">
                             <p>Das Gehalt in der Pflege ist in den letzten Jahren <strong>deutlich gestiegen</strong>. Wie viel man verdient, hängt von der Qualifikation, dem Bundesland, der Einrichtung und der Berufserfahrung ab. Viele Einrichtungen zahlen nach Tarif, etwa nach dem <strong>TVöD</strong> im öffentlichen Dienst.</p>
-                            <p>Eine Pflegefachkraft verdient in der Regel mehr als ein Pflegehelfer, und mit Weiterbildungen lässt sich das Gehalt weiter steigern. Eine ausführliche Übersicht mit aktuellen Zahlen finden Sie im Beitrag zum <a href="<?php echo esc_url( home_url( '/pflegeberufe/gehalt-pflege/' ) ); ?>">Gehalt in der Pflege</a>.</p>
+                            <p>Eine Pflegefachkraft verdient in der Regel mehr als ein Pflegehelfer, und mit Weiterbildungen lässt sich das Gehalt weiter steigern. Eine ausführliche Übersicht mit aktuellen Zahlen finden Sie im Beitrag zum <a href="<?php echo esc_url( home_url( '/pflegeberufe/gehalt/' ) ); ?>">Gehalt in der Pflege</a>.</p>
                         </div>
                     </div>
 
